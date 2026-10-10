@@ -24,11 +24,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 function Block({ n, title, children }: { n: string; title: string; children: React.ReactNode }) {
   return (
     <Reveal as="section" className="grid gap-4 border-t border-line py-10 md:grid-cols-[220px_1fr] md:gap-10">
-      <h2 className="flex items-baseline gap-3 font-display text-2xl tracking-tight">
+      <h2 className="flex items-baseline gap-3 font-display text-xl tracking-tight">
         <span className="font-mono text-sm text-accent">{n}</span>
         {title}
       </h2>
-      <div className="max-w-2xl text-muted md:text-lg">{children}</div>
+      <div className="max-w-2xl text-muted">{children}</div>
     </Reveal>
   );
 }
@@ -49,8 +49,8 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
         <p className="mt-8 font-mono text-xs uppercase tracking-[0.2em] text-muted">
           <span className="text-accent">{String(index + 1).padStart(2, "0")}</span> {project.category} · {project.organization} · {project.year}
         </p>
-        <h1 className="mt-4 max-w-4xl font-display text-4xl leading-[1.05] tracking-tight md:text-6xl">{project.title}</h1>
-        <p className="mt-5 max-w-2xl text-lg text-muted">{project.summary}</p>
+        <h1 className="mt-4 max-w-4xl font-display text-3xl leading-[1.08] tracking-tight md:text-5xl">{project.title}</h1>
+        <p className="mt-4 max-w-2xl text-base text-muted">{project.summary}</p>
         <div className="mt-6 flex flex-wrap gap-3">
           {project.demo && (
             <Button href={project.demo} external>
@@ -70,7 +70,7 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
           {project.metrics.map((m) => (
             <div key={m.label} className="flex flex-col-reverse bg-bg p-6">
               <dt className="mt-1 text-sm text-muted">{m.label}</dt>
-              <dd className="font-display text-4xl text-accent">{m.value}</dd>
+              <dd className="font-display text-3xl text-accent">{m.value}</dd>
             </div>
           ))}
         </dl>
@@ -122,9 +122,9 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
         >
           <span>
             <span className="font-mono text-xs uppercase tracking-widest text-muted">Next project</span>
-            <span className="mt-2 block font-display text-2xl tracking-tight md:text-3xl">{next.title}</span>
+            <span className="mt-2 block font-display text-xl tracking-tight md:text-2xl">{next.title}</span>
           </span>
-          <Arrow className="h-6 w-6 shrink-0 text-accent transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+          <Arrow className="h-5 w-5 shrink-0 text-accent transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </Link>
       </Container>
     </article>

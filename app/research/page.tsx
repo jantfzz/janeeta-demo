@@ -27,9 +27,9 @@ export default function ResearchPage() {
               <span className="text-sm text-muted">{r.year}</span>
               <div>
                 <Tag>{r.type}</Tag>
-                <h2 className="mt-3 font-display text-2xl leading-snug tracking-tight">{r.title}</h2>
+                <h2 className="mt-3 font-display text-xl leading-snug tracking-tight">{r.title}</h2>
                 <p className="mt-1 text-sm font-semibold">{r.venue}</p>
-                <p className="mt-3 max-w-2xl text-muted">{r.summary}</p>
+                <p className="mt-3 max-w-2xl text-sm text-muted">{r.summary}</p>
                 {r.project && (
                   <Link href={`/work/${r.project}`} className="mt-4 inline-flex items-center gap-1.5 text-sm text-accent hover:underline">
                     Read the case study <Arrow />

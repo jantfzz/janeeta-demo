@@ -91,34 +91,35 @@ export const projects: Project[] = [
     tools: ["R", "JASP", "ANOVA & Duncan", "FDA assay", "CFU enumeration", "SPAD"],
   },
   {
-    slug: "crop-yield-prediction",
-    title: "Crop Data Pipeline & Yield Prediction",
+    slug: "tomato-leaf-disease-ml",
+    title: "ML for Precision Farming: Tomato Leaf Disease",
     summary:
-      "Collected crop data through web scraping and image processing, cleaned it, and built machine-learning models to predict trends.",
+      "A machine-learning project that identifies tomato leaf diseases from images, built on scraped and image-processed crop data.",
     category: "Data",
     year: "2025",
     organization: "PT Inari Studio Digital",
     metrics: [
       { value: "2", label: "Data sources: web & images" },
-      { value: "ML", label: "Predictive models" },
-      { value: "3 mo", label: "Engagement" },
+      { value: "CNN", label: "EfficientNet image model" },
+      { value: "3 mo", label: "Internship" },
     ],
     context:
-      "As a Data Scientist & AI Engineer at Inari Studio Digital, I worked on agricultural crop data that had to be gathered from scattered public sources before it could be modelled.",
+      "As a Data Scientist & AI Engineer intern at Inari Studio Digital, I worked on a precision-farming use case: a system that identifies tomato leaf diseases (Sistem Identifikasi Penyakit Daun Tomat Berbasis EfficientNet untuk Aplikasi Precision Farming).",
     challenge:
-      "Raw scraped and image-derived data was noisy and inconsistent. Models are only as good as that input, so cleaning was most of the work.",
-    role: "Data Scientist & AI Engineer (Jul – Sep 2025).",
+      "The training data had to be gathered from scattered public sources and images, and arrived noisy and inconsistent. Models are only as good as that input, so collection and cleaning were most of the work.",
+    role: "Data Scientist & AI Engineer intern (Jul – Sep 2025, remote).",
     approach: [
-      "Collected crop data through web scraping and image processing.",
-      "Cleaned and validated raw records, removing errors and inconsistent entries.",
-      "Trained predictive models with machine-learning algorithms to analyse trends.",
-      "Checked model behaviour with black-box testing.",
+      "Collected data through web scraping and image processing.",
+      "Cleaned raw data, removing errors and inconsistent records.",
+      "Trained an image-classification model on an EfficientNet backbone with TensorFlow.",
+      "Built predictive models that help businesses understand trends and solve problems.",
+      "Documented the materials and methods for the project presentation.",
     ],
     results: [
       "Turned scattered public crop data into a clean, model-ready dataset.",
-      "Delivered predictive models for trend analysis and yield prediction.",
+      "Delivered a disease-identification model aimed at precision-farming applications.",
     ],
-    tools: ["Python", "Web scraping", "Image processing", "scikit-learn", "NumPy"],
+    tools: ["Python", "TensorFlow", "EfficientNet", "Web scraping", "Image processing"],
   },
   {
     slug: "ai-platform-go-to-market",
@@ -206,6 +207,38 @@ export const projects: Project[] = [
     ],
     tools: ["ArcGIS", "ArcMap", "Landsat", "Image classification"],
   },
+  {
+    slug: "growth-chamber-kit",
+    title: "The Growth Chamber Kit",
+    summary:
+      "A team-built plant growth chamber kit, taken from sketch to physical prototype at ITB.",
+    category: "Design",
+    year: "2023",
+    organization: "Institut Teknologi Bandung",
+    metrics: [
+      { value: "3 mo", label: "Mar – May 2023" },
+      { value: "Team", label: "Project lead role" },
+      { value: "Build", label: "Physical prototype" },
+    ],
+    context:
+      "An ITB team project to build a growth chamber: an enclosed, controlled environment for growing plants.",
+    challenge:
+      "Take the chamber from sketch to a working physical kit within one semester, as a team.",
+    role: "Team leader and project manager.",
+    approach: [
+      "Planned the project and coordinated the team through design and assembly.",
+      "Sketched the chamber layout and component placement.",
+      "Built the physical kit with the team.",
+    ],
+    results: ["Delivered a working growth chamber prototype within the semester."],
+    tools: ["Project management", "Project engineering", "Team leadership", "Prototyping"],
+  },
 ];
 
 export const getProject = (slug: string) => projects.find((p) => p.slug === slug);
+
+// Smaller projects listed under "More projects" on /work (no case study page).
+export const moreProjects = [
+  { title: "Bioethanol from Banana-Peel Waste for Hand Sanitizer", year: "2021", note: "Antibacterial agent research · 3rd Runner-up, Young Scientist Competition" },
+  { title: "Eco Snack Wrap", year: "2020", note: "Zero-waste project · life sciences" },
+];

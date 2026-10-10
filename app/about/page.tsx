@@ -23,7 +23,7 @@ export default function AboutPage() {
             </div>
           </Reveal>
           <Reveal delay={100}>
-            <div className="space-y-5 text-lg text-muted">
+            <div className="space-y-4 text-base text-muted">
               <p className="text-ink">
                 Hi, I&rsquo;m {site.name}. Friends call me {site.shortName}. I graduated in Bio-Agricultural Engineering from
                 Institut Teknologi Bandung and I&rsquo;m based in {site.location}.

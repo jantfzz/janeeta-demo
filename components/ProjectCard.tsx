@@ -5,7 +5,7 @@ import { Arrow } from "./ui";
 
 export default function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface transition duration-300 hover:-translate-y-1 hover:border-accent/60 hover:shadow-[0_18px_40px_-24px_rgba(0,0,0,0.35)]">
+    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface transition duration-300 hover:-translate-y-0.5 hover:border-accent/50 hover:shadow-[0_10px_24px_-18px_rgba(0,0,0,0.3)]">
       <Link href={`/work/${project.slug}`} tabIndex={-1} aria-hidden="true">
         <ProjectCover project={project} index={index} className="aspect-[16/9]" />
       </Link>
@@ -13,18 +13,18 @@ export default function ProjectCard({ project, index }: { project: Project; inde
         <p className="font-mono text-xs uppercase tracking-widest text-muted">
           {project.organization} · {project.year}
         </p>
-        <h3 className="mt-2 font-display text-2xl tracking-tight">
+        <h3 className="mt-2 font-display text-xl tracking-tight">
           <Link href={`/work/${project.slug}`} className="hover:text-accent">
             {project.title}
           </Link>
         </h3>
-        <p className="mt-2 text-muted">{project.summary}</p>
+        <p className="mt-2 text-sm text-muted">{project.summary}</p>
 
         <dl className="mt-5 grid grid-cols-3 gap-3 border-t border-line pt-4">
           {project.metrics.map((m) => (
             <div key={m.label}>
               <dt className="sr-only">{m.label}</dt>
-              <dd className="font-display text-xl text-ink">{m.value}</dd>
+              <dd className="font-display text-lg text-ink">{m.value}</dd>
               <dd className="text-xs leading-snug text-muted">{m.label}</dd>
             </div>
           ))}

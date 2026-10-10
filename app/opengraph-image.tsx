@@ -41,7 +41,7 @@ export default function OGImage() {
           </div>
           <div style={{ fontSize: 30, color: "#9da296" }}>{site.name}</div>
         </div>
-        <div style={{ fontSize: 68, lineHeight: 1.1, maxWidth: 1000, letterSpacing: -1.5 }}>{site.headline}</div>
+        <div style={{ fontSize: 54, lineHeight: 1.12, maxWidth: 1050, letterSpacing: -1.5 }}>{site.headline}</div>
         <div style={{ display: "flex", justifyContent: "space-between", fontSize: 26, color: "#9da296" }}>
           <span>{site.role}</span>
           <span style={{ color: "#a8cc7c" }}>ITB · Bandung</span>

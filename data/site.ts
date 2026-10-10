@@ -9,7 +9,10 @@ export const site = {
   url: "https://janeeta-portfolio.vercel.app",
   location: "Bandung, West Java, Indonesia",
 
-  headline: "I turn lab data and field systems into business decisions.",
+  // Words the animated header logo types out, one after another.
+  logoWords: ["janeeta.faiza", "data analyst", "agri-tech", "lab geek"],
+
+  headline: "I analyze lab data and field systems into statistical insights and business decisions.",
   intro:
     "I'm Janeeta, a Bio-Agricultural Engineering graduate from ITB. I work across data analytics, business intelligence and go-to-market planning, grounded in hands-on microbiology lab work and agricultural systems research.",
 
@@ -20,9 +23,19 @@ export const site = {
     { label: "Leadership", value: "Treasurer & Head of Fundraising, KPA-ITB" },
   ],
 
+  // Headline numbers shown with a count-up animation on the home page.
+  stats: [
+    { value: 33, suffix: "", label: "Lab experiments supported" },
+    { value: 20, suffix: "+", label: "Roles & projects" },
+    { value: 8, suffix: "", label: "Certifications" },
+    { value: 87, suffix: "", label: "Skills on LinkedIn" },
+  ],
+
   links: {
     email: "janeetafz@gmail.com",
     linkedin: "https://www.linkedin.com/in/janeeta-faiza/",
+    instagram: "https://www.instagram.com/jantfzz/",
+    instagramHandle: "@jantfzz",
     github: "", // add your GitHub URL here to show the button
   },
 
@@ -34,8 +47,9 @@ export const site = {
   },
 
   about: [
-    "At Institut Teknologi Bandung I studied how living systems, soil, water and machines work together, then spent my lab hours counting colonies, logging trial data and checking that every experiment met its safety standard.",
-    "Along the way I found that the part I enjoy most is what happens after the data is collected: cleaning it, finding the pattern and turning it into a decision someone can act on. That thread runs from my crop-yield models and thesis statistics to campaign benchmarking and event budgets.",
+    "I'm a proactive Bio-Agricultural Engineering graduate with experience in Agri-Tech projects. Science competitions sharpened my research and problem-solving, and three laboratory assistantships at ITB taught me to keep experiments rigorous, documented and safe.",
+    "Campus organizations strengthened my teamwork and leadership: managing end-to-end programs, monitoring performance metrics and creating measurable impact through data-driven execution. I'm now broadening my knowledge of AI & machine learning engineering and web development.",
+    "Outside the data, I'm comfortable behind a camera and in editing software for photography, videography and graphic design, skills I've used for event documentation and campaign content.",
   ],
 
   aboutFacts: [
@@ -43,6 +57,21 @@ export const site = {
     { label: "Program", value: "Bio-Agricultural Engineering, 2022 – 2026" },
     { label: "Lab work", value: "Three laboratory assistantships, 33 experiments supported" },
     { label: "Languages", value: "Indonesian (native), English (IELTS 6.5)" },
+  ],
+
+  education: [
+    {
+      school: "Institut Teknologi Bandung",
+      degree: "Bachelor of Engineering, Bio-Agricultural Engineering",
+      detail: "School of Life Sciences and Technology · GPA 3.39 / 4.00",
+      period: "2022 – 2026",
+    },
+    {
+      school: "Mutiara Bunda Senior High School",
+      degree: "High School Diploma, Mathematics and Natural Sciences",
+      detail: "Journalism club; Class Representative Council (MPK)",
+      period: "2019 – 2022",
+    },
   ],
 
   openTo: [

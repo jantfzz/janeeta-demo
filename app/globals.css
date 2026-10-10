@@ -69,6 +69,26 @@
 
 html {
   scroll-behavior: smooth;
+  /* Base size: everything sized in rem scales with this. 15px = slightly smaller than default. */
+  font-size: 15px;
+}
+
+@media (min-width: 1280px) {
+  html {
+    font-size: 15.5px;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Thin reading-progress bar under the navbar */
+.scroll-progress {
+  transform-origin: 0 50%;
+  transform: scaleX(var(--progress, 0));
 }
 
 body {

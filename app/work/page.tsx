@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { projects } from "@/data/projects";
+import { moreProjects, projects } from "@/data/projects";
 import PageHeader from "@/components/PageHeader";
 import ProjectCard from "@/components/ProjectCard";
 import Reveal from "@/components/Reveal";
@@ -27,6 +27,22 @@ export default function WorkPage() {
             </Reveal>
           ))}
         </div>
+
+        <section aria-labelledby="more" className="mt-16">
+          <h2 id="more" className="font-mono text-[10px] uppercase tracking-widest text-muted">
+            More projects
+          </h2>
+          <ul className="mt-3 divide-y divide-line border-y border-line">
+            {moreProjects.map((p) => (
+              <li key={p.title} className="flex flex-wrap items-baseline justify-between gap-2 py-4">
+                <span className="font-display text-lg tracking-tight">{p.title}</span>
+                <span className="text-sm text-muted">
+                  {p.note} · {p.year}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
       </Container>
     </>
   );

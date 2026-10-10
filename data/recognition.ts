@@ -1,4 +1,4 @@
-// Awards and competition papers, newest first.
+// Awards and certifications, newest first.
 
 export const recognition = [
   {
@@ -27,11 +27,21 @@ export const recognition = [
   },
 ];
 
-export const certifications = [
-  "Supervised Machine Learning: Regression and Classification — Stanford University",
-  "Introduction to Data Analytics — RevoU",
-  "Data Analytics with Python — BINUS",
-  "Object Oriented Programming with C++",
-  "AI for Productivity — Dicoding",
-  "EF SET English Certificate — 67/100",
+export type Certification = {
+  title: string;
+  issuer: string;
+  date: string;
+  category: "Data & AI" | "Programming" | "Language";
+  url?: string; // add the "Show credential" link from LinkedIn to show a button
+};
+
+export const certifications: Certification[] = [
+  { title: "Introduction to Programming Using Python", issuer: "Dicoding Indonesia", date: "Sep 2026", category: "Programming" },
+  { title: "AI for Productivity", issuer: "Dicoding Indonesia", date: "May 2026", category: "Data & AI" },
+  { title: "Supervised Machine Learning: Regression and Classification", issuer: "DeepLearning.AI, Stanford University", date: "Sep 2024", category: "Data & AI" },
+  { title: "Data Analyst with Python", issuer: "BINUS Group", date: "Aug 2024", category: "Data & AI" },
+  { title: "Introduction to Data Analytics", issuer: "RevoU", date: "Aug 2024", category: "Data & AI" },
+  { title: "Object Oriented Programming with C++", issuer: "BINUS Group", date: "Jul 2024", category: "Programming" },
+  { title: "EF SET English Certificate (67/100)", issuer: "EF Standard English Test", date: "", category: "Language" },
+  { title: "English Program", issuer: "Wall Street English Indonesia", date: "Aug 2021", category: "Language" },
 ];

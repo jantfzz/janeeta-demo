@@ -31,15 +31,20 @@ export default function ResumePage() {
               <h2 className="font-display text-2xl">{site.name}</h2>
               <p className="mt-1 text-muted">{site.role}</p>
               <p className="mt-3 text-muted">{site.location}</p>
+              {site.links.instagram && <p className="text-muted">Instagram {site.links.instagramHandle}</p>}
               <p>
                 <a href={`mailto:${site.links.email}`} className="text-accent hover:underline">{site.links.email}</a>
               </p>
             </div>
             <div>
               <h3 className="font-mono text-[11px] uppercase tracking-widest text-muted">Education</h3>
-              <p className="mt-2 font-semibold">Institut Teknologi Bandung</p>
-              <p className="text-muted">Bio-Agricultural Engineering, 2022 – 2026</p>
-              <p className="text-muted">GPA 3.39 / 4.00 · 158 credits</p>
+              {site.education.map((e) => (
+                <div key={e.school} className="mt-2">
+                  <p className="font-semibold">{e.school}</p>
+                  <p className="text-muted">{e.degree}</p>
+                  <p className="text-muted">{e.period}</p>
+                </div>
+              ))}
             </div>
             <div>
               <h3 className="font-mono text-[11px] uppercase tracking-widest text-muted">Skills</h3>
@@ -53,7 +58,10 @@ export default function ResumePage() {
               <h3 className="font-mono text-[11px] uppercase tracking-widest text-muted">Certifications</h3>
               <ul className="mt-2 space-y-2">
                 {certifications.map((c) => (
-                  <li key={c}>{c}</li>
+                  <li key={c.title}>
+                    {c.title}
+                    <span className="block text-xs text-muted">{c.issuer}</span>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -68,7 +76,7 @@ export default function ResumePage() {
                       <p className="font-semibold">{e.role}</p>
                       <p className="text-sm text-muted">{e.period}</p>
                     </div>
-                    <p className="text-sm text-muted">{e.organization}</p>
+                    <p className="text-sm text-muted">{e.organization} · {e.type}</p>
                     <p className="mt-2 text-sm">{e.highlight}</p>
                   </li>
                 ))}

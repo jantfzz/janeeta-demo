@@ -4,7 +4,7 @@ export const capabilities = [
   {
     title: "Data & analytics",
     skills: ["Python", "SQL", "R", "Power BI", "Data cleansing & validation", "Machine learning"],
-    projects: ["crop-yield-prediction", "pgpr-biochar-lettuce"],
+    projects: ["tomato-leaf-disease-ml", "pgpr-biochar-lettuce"],
   },
   {
     title: "Field & lab science",
@@ -19,6 +19,6 @@ export const capabilities = [
   {
     title: "Delivery & leadership",
     skills: ["Project management", "Budget control", "Stakeholder & vendor coordination", "Team performance systems"],
-    projects: ["kpa-seasonal-event-fundraising", "ai-platform-go-to-market"],
+    projects: ["kpa-seasonal-event-fundraising", "growth-chamber-kit"],
   },
 ];

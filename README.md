@@ -25,8 +25,12 @@ npm run dev        # http://localhost:3000
 | Awards and certifications | `data/recognition.ts` |
 | Research list | `data/research.ts` |
 | Skill groups ("Demonstrated in") | `data/capabilities.ts` |
+| Skills page (explorer, top skills, tools) | `data/skills.ts` |
+| Navbar items | `data/nav.ts` |
+| Animated logo words, stats, education, Instagram | `data/site.ts` |
 | Interactive showcase data | `data/showcase.ts` |
 
+- **Certificate links:** add `url: "https://..."` to a certification in `data/recognition.ts` to show a "Show credential" button.
 - **GitHub button:** add your URL to `links.github` in `data/site.ts`. Empty links are hidden.
 - **Project images:** put a screenshot in `public/` and add `image: "/file.png"` to the project. Without one, a generated illustration is shown.
 - **Demo / Source buttons:** add `demo` or `source` URLs to a project.
