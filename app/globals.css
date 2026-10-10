@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+/* ---------- Color tokens ----------
+   Change the accent here to re-color the whole site. */
+:root {
+  --bg: #f5f4ee;
+  --surface: #ffffff;
+  --surface-2: #ecebe3;
+  --line: #dcdad0;
+  --text: #171914;
+  --muted: #5c6157;
+  --accent: #3e6b2a;
+  --accent-soft: #e3ebd8;
+  --accent-ink: #ffffff;
+  --series-1: #3e6b2a;
+  --series-2: #b0602f;
+  --series-3: #3c6e8f;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111310;
+    --surface: #181b16;
+    --surface-2: #1f231d;
+    --line: #2b3028;
+    --text: #ecede6;
+    --muted: #9da296;
+    --accent: #a8cc7c;
+    --accent-soft: #232b1d;
+    --accent-ink: #111310;
+    --series-1: #a8cc7c;
+    --series-2: #dc9f6d;
+    --series-3: #8db7d1;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #111310;
+  --surface: #181b16;
+  --surface-2: #1f231d;
+  --line: #2b3028;
+  --text: #ecede6;
+  --muted: #9da296;
+  --accent: #a8cc7c;
+  --accent-soft: #232b1d;
+  --accent-ink: #111310;
+  --series-1: #a8cc7c;
+  --series-2: #dc9f6d;
+  --series-3: #8db7d1;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-ink: var(--text);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-ink: var(--accent-ink);
+  --font-display: "Fraunces Variable", Georgia, serif;
+  --font-sans: "Manrope Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Recharts tooltip in both themes */
+.recharts-default-tooltip {
+  background: var(--surface) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 10px;
+  color: var(--text);
+}
