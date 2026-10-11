@@ -17,8 +17,9 @@ export const site = {
     "I'm Janeeta, I analyze lab data and field systems into statistical insights and business decisions. I work across data analytics, business intelligence and go-to-market planning, grounded in hands-on microbiology lab work and agricultural systems research.",
 
   quickFacts: [
-    { label: "Current focus", value: "Data analytics & business intelligence" },
+    { label: "Current focus", value: "Data analytics, Business intelligence, Applied AI, Lab R&D, Food Science, QC/QA, SCM" },
     { label: "Education", value: "Bio-Agricultural Engineering, ITB" },
+    { label: "School of Life Sciences and Technology - Engineering", value: "Aug 2022 - Aug 2026" },
     { label: "Leadership", value: "Treasurer & Head of Fundraising, KPA-ITB" },
   ],
 
