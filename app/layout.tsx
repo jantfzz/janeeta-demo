@@ -6,6 +6,7 @@ import "./globals.css";
 import { site } from "@/data/site";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import BackgroundFX from "@/components/BackgroundFX";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -63,6 +64,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to content
         </a>
+        <BackgroundFX />
         <Nav />
         <main id="main-content" tabIndex={-1} className="outline-none">{children}</main>
         <Footer />

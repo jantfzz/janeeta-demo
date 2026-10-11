@@ -1,14 +1,16 @@
-// Professional, leadership and volunteering experience, newest first within each type.
+// Experience in four categories, newest first within each category.
+// Add `photos: ["/exp/kpa-1.jpg", ...]` (files in /public) to show a gallery in the details window.
 
 export type Experience = {
   organization: string;
   location: string;
   period: string;
   role: string;
-  type: "Professional" | "Leadership" | "Volunteering";
+  type: "Professional" | "Teaching & Mentoring" | "Organization" | "Volunteer";
   highlight: string;
   details?: string[];
   skills?: string[];
+  photos?: string[];
 };
 
 const entries: Experience[] = [
@@ -32,7 +34,7 @@ const entries: Experience[] = [
     location: "Bandung, West Java",
     period: "Feb 2026 – Jun 2026",
     role: "Land and Water Resources Engineering Laboratory Assistant",
-    type: "Professional",
+    type: "Teaching & Mentoring",
     highlight:
       "Supported 11 laboratory and field experiments on water and land engineering problems in agricultural systems.",
     details: [
@@ -57,7 +59,7 @@ const entries: Experience[] = [
     location: "Bandung, West Java · Hybrid",
     period: "Aug 2025 – Jan 2026",
     role: "Ethics and Leadership Mentoring Assistant",
-    type: "Professional",
+    type: "Teaching & Mentoring",
     highlight: "Mentored first-year (TPB) students through ethics and leadership mentoring sessions.",
     skills: ["Peer Mentoring", "Public Relations"],
   },
@@ -95,7 +97,7 @@ const entries: Experience[] = [
     location: "Sumedang, West Java",
     period: "Feb 2025 – Jun 2025",
     role: "Agricultural Microbiology Laboratory Assistant",
-    type: "Professional",
+    type: "Teaching & Mentoring",
     highlight:
       "Assisted 12 microbiology experiments and R&D topics, contributing to 5+ research papers on microorganisms in agriculture.",
     details: ["Taught microbial characterization through to the application of microorganisms in agriculture."],
@@ -106,7 +108,7 @@ const entries: Experience[] = [
     location: "Sumedang, West Java",
     period: "Aug 2024 – Dec 2024",
     role: "Plant and Livestock Sciences Laboratory Assistant",
-    type: "Professional",
+    type: "Teaching & Mentoring",
     highlight:
       "Supported 10 plant and livestock science experiments and helped develop lab resources, keeping a 100% safety record.",
     skills: ["Academic Research", "Communication"],
@@ -116,19 +118,19 @@ const entries: Experience[] = [
     location: "Hybrid",
     period: "Jul 2024 – Nov 2024",
     role: "Pancasila Assistant Lecturer",
-    type: "Professional",
+    type: "Teaching & Mentoring",
     highlight:
       "Assisted first-year students in Pancasila lectures and guided their TAPAK LIMAN community-service project on raising digital literacy.",
     skills: ["Tutoring", "Communication"],
   },
 
-  // ---------- Leadership ----------
+  // ---------- Organization ----------
   {
     organization: "Keluarga Paduan Angklung ITB (KPA-ITB)",
     location: "Indonesia · Hybrid",
     period: "Jul 2024 – Aug 2025",
     role: "Treasurer and Head of Fundraising, Konser 2025",
-    type: "Leadership",
+    type: "Organization",
     highlight:
       "Grew seasonal-event revenue by 60% through sponsorships, donations and ticket sales, and finished 15% under budget.",
     details: [
@@ -143,7 +145,7 @@ const entries: Experience[] = [
     location: "Indonesia · Hybrid",
     period: "May 2024 – Dec 2025",
     role: "Treasurer and Entrepreneurship Manager",
-    type: "Leadership",
+    type: "Organization",
     highlight: "Kept the organization's cash flow positive and tracked actual net cash flow from event activities each month.",
     skills: ["Accounting", "Cash Management"],
   },
@@ -152,7 +154,7 @@ const entries: Experience[] = [
     location: "Indonesia",
     period: "Jun 2024 – Dec 2024",
     role: "Publications Officer",
-    type: "Leadership",
+    type: "Organization",
     highlight:
       "Increased follower engagement on Instagram and TikTok by 40%, and built broadcast strategies reaching 2,000+ members.",
     details: ["Created Instagram and TikTok content, wrote broadcast copy and edited short videos."],
@@ -163,7 +165,7 @@ const entries: Experience[] = [
     location: "West Java · Hybrid",
     period: "Sep 2024 – May 2025",
     role: "Head of Product, ReGrow Project",
-    type: "Leadership",
+    type: "Organization",
     highlight:
       "Raised LinkedIn page engagement by 60% through educational posts and the ReGrow Magazine flipbook.",
     details: ["Managed the project's funds and vendor needs."],
@@ -174,7 +176,7 @@ const entries: Experience[] = [
     location: "Sumedang, West Java · Hybrid",
     period: "Aug 2024 – Oct 2024",
     role: "Liaison Officer, October 2024 Graduation",
-    type: "Leadership",
+    type: "Organization",
     highlight:
       "Managed communication between graduates and the internal committee, and coordinated graduates for the October 2024 ceremony.",
     skills: ["Communication", "Public Relations"],
@@ -184,7 +186,7 @@ const entries: Experience[] = [
     location: "Indonesia · Hybrid",
     period: "Oct 2023 – Feb 2024",
     role: "Head of Fundraising, Konser Angklung Rakyat XI",
-    type: "Leadership",
+    type: "Organization",
     highlight:
       "Negotiated sponsor agreements, evaluated the impact of fundraising initiatives and coordinated event merchandise with the design division.",
     skills: ["Negotiation", "Sponsorship"],
@@ -194,7 +196,7 @@ const entries: Experience[] = [
     location: "Sumedang, West Java",
     period: "Oct 2023 – May 2024",
     role: "Sponsorship Officer, 9th Agrifasco 2023",
-    type: "Leadership",
+    type: "Organization",
     highlight: "Negotiated sponsorship agreements and maintained sponsor relationships for the event.",
     skills: ["Negotiation", "Digital Marketing"],
   },
@@ -203,7 +205,7 @@ const entries: Experience[] = [
     location: "Indonesia",
     period: "Oct 2023 – May 2024",
     role: "Staff of Academic Division",
-    type: "Leadership",
+    type: "Organization",
     highlight: "Compiled the complete academic archive and worked with 5+ tutors to run class tutorials.",
     skills: ["Academic Advising", "Tutoring"],
   },
@@ -212,7 +214,7 @@ const entries: Experience[] = [
     location: "Indonesia · Hybrid",
     period: "Aug 2023 – Oct 2023",
     role: "Staff of Operational Division",
-    type: "Leadership",
+    type: "Organization",
     highlight:
       "Sourced and purchased materials for the university orientation, scheduled shipments and deliveries, and proposed changes to improve efficiency.",
     skills: ["Procurement", "Logistics Management"],
@@ -222,7 +224,7 @@ const entries: Experience[] = [
     location: "Bandung, West Java · Remote",
     period: "Mar 2023 – Jul 2024",
     role: "Human Resources Officer",
-    type: "Leadership",
+    type: "Organization",
     highlight:
       "Built a survey-based engagement review and performance evaluation system, lifting team performance by 35%.",
     details: [
@@ -236,18 +238,18 @@ const entries: Experience[] = [
     location: "Indonesia · On-site",
     period: "Mar 2023 – May 2023",
     role: "Staff of Documentation and Publication",
-    type: "Leadership",
+    type: "Organization",
     highlight: "Photographed and filmed the graduation parade, then edited the photos and videos for publication.",
     skills: ["Event Photography", "Video Editing", "Adobe Photoshop"],
   },
 
-  // ---------- Volunteering ----------
+  // ---------- Volunteer ----------
   {
     organization: "ParaJuara.id",
     location: "Indonesia",
     period: "Dec 2025 – Present",
     role: "“Project Bumi” Assessor",
-    type: "Volunteering",
+    type: "Volunteer",
     highlight: "Assessor for a cross-cultural community service project run with Singapore Management University.",
   },
   {
@@ -255,7 +257,7 @@ const entries: Experience[] = [
     location: "Indonesia",
     period: "Apr 2023 – May 2023",
     role: "Documentary Director, Social Event “TALAGATHA”",
-    type: "Volunteering",
+    type: "Volunteer",
     highlight: "Directed documentation for the cohort's social-service event.",
   },
 ];
@@ -266,7 +268,8 @@ const start = (e: Experience) => {
   const [m, y] = e.period.split("–")[0].trim().split(" ");
   return Number(y) * 12 + months.indexOf(m);
 };
-const order = { Professional: 0, Leadership: 1, Volunteering: 2 } as const;
+export const experienceTypes = ["Professional", "Teaching & Mentoring", "Organization", "Volunteer"] as const;
+const order = { Professional: 0, "Teaching & Mentoring": 1, Organization: 2, Volunteer: 3 } as const;
 
 export const experience: Experience[] = [...entries].sort(
   (a, b) => order[a.type] - order[b.type] || start(b) - start(a)

@@ -32,7 +32,7 @@ export default function ResearchPage() {
                 <p className="mt-3 max-w-2xl text-sm text-muted">{r.summary}</p>
                 {r.project && (
                   <Link href={`/work/${r.project}`} className="mt-4 inline-flex items-center gap-1.5 text-sm text-accent hover:underline">
-                    Read the case study <Arrow />
+                    Read case preview <Arrow />
                   </Link>
                 )}
               </div>

@@ -35,7 +35,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
             href={`/work/${project.slug}`}
             className="inline-flex items-center gap-1.5 rounded-full bg-ink px-4 py-2 text-sm text-bg transition-colors hover:bg-accent hover:text-accent-ink"
           >
-            Case study <Arrow />
+            Case Preview <Arrow />
           </Link>
           {project.demo && (
             <a href={project.demo} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded-full border border-line px-4 py-2 text-sm hover:border-ink">

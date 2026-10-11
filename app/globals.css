@@ -85,6 +85,32 @@ html {
   }
 }
 
+/* Scrolling tools strip */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee 60s linear infinite;
+}
+.marquee-track[data-reverse] {
+  animation-direction: reverse;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+    width: auto;
+    flex-wrap: wrap;
+  }
+  .marquee-track > [aria-hidden="true"] {
+    display: none;
+  }
+}
+
 /* Thin reading-progress bar under the navbar */
 .scroll-progress {
   transform-origin: 0 50%;

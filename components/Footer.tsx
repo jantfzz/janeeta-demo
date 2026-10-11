@@ -8,6 +8,8 @@ export default function Footer() {
   const social = [
     site.links.linkedin && { href: site.links.linkedin, label: "LinkedIn" },
     site.links.instagram && { href: site.links.instagram, label: "Instagram" },
+    site.links.youtube && { href: site.links.youtube, label: "YouTube" },
+    site.links.strava && { href: site.links.strava, label: "Strava" },
     site.links.github && { href: site.links.github, label: "GitHub" },
   ].filter(Boolean) as { href: string; label: string }[];
 
@@ -52,6 +54,13 @@ export default function Footer() {
                 </a>
               </li>
             )}
+            {site.links.youtube && (
+              <li>
+                <a href={site.links.youtube} target="_blank" rel="noopener noreferrer" className="text-ink hover:text-accent">
+                  YouTube {site.links.youtubeHandle}
+                </a>
+              </li>
+            )}
             <li className="text-muted">{site.location}</li>
           </ul>
         </div>
@@ -68,7 +77,7 @@ export default function Footer() {
             ))}
             <li>
               <Link href="/resume" className="text-muted hover:text-ink">
-                Résumé
+                Resume
               </Link>
             </li>
             <li>

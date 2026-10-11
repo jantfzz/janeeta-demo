@@ -19,7 +19,7 @@ export default function ExperiencePage() {
         number="03"
         eyebrow="Experience"
         title="The full record."
-        intro={`${experience.length} roles across industry, three ITB laboratories, campus organizations and volunteering. Filter by type below.`}
+        intro={`${experience.length} roles across industry, teaching and mentoring at ITB, campus organizations and volunteering. Filter by category, then open any role for details.`}
       />
       <Container className="space-y-20">
         <section aria-label="Experience record">
@@ -50,6 +50,8 @@ export default function ExperiencePage() {
                     {r.date} · {r.issuer}
                   </p>
                   <p className="mt-1 text-sm font-semibold">{r.title}</p>
+                  <p className="mt-1 text-sm text-muted">{r.description}</p>
+                  <p className="mt-1 text-xs text-accent">{r.field} · {r.level}</p>
                 </li>
               ))}
             </ul>
@@ -63,7 +65,10 @@ export default function ExperiencePage() {
                     {c.title}
                     <span className="block text-xs text-muted">{c.issuer}</span>
                   </span>
-                  <span className="shrink-0 text-xs text-muted">{c.date}</span>
+                  <span className="shrink-0 text-right text-xs text-muted">
+                    {c.category}
+                    <span className="block">{c.date}</span>
+                  </span>
                 </li>
               ))}
             </ul>

@@ -17,7 +17,7 @@ export default function WorkPage() {
         number="01"
         eyebrow="Work"
         title="Selected work"
-        intro="Research, data and business projects. Each case study explains the context, my role, the decisions I made and what came of them."
+        intro="Research, data and business projects. Each case preview explains the context, my role, the decisions I made and what came of them."
       />
       <Container>
         <div className="grid gap-6 md:grid-cols-2">

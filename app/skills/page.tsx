@@ -3,26 +3,29 @@ import Link from "next/link";
 import { capabilities } from "@/data/capabilities";
 import { certifications } from "@/data/recognition";
 import { projects } from "@/data/projects";
-import { tools, topSkills } from "@/data/skills";
+import { skillGroups, toolGroups, topSkills } from "@/data/skills";
 import PageHeader from "@/components/PageHeader";
 import SkillsExplorer from "@/components/SkillsExplorer";
+import ToolsMarquee from "@/components/ToolsMarquee";
+import CertificationGrid from "@/components/CertificationGrid";
 import Reveal from "@/components/Reveal";
-import { Arrow, Container, SectionHeader, Tag } from "@/components/ui";
+import { Container, SectionHeader, Tag } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Skills",
-  description: "Skills, tools and certifications of Janeeta Faiza across data, lab research, marketing, finance and leadership.",
+  description: "Tools, hard, technical, lab, business and soft skills of Janeeta Faiza, plus certifications.",
 };
 
 export default function SkillsPage() {
   const titleOf = (slug: string) => projects.find((p) => p.slug === slug)?.title ?? slug;
+  const total = skillGroups.reduce((n, g) => n + g.skills.length, 0);
   return (
     <>
       <PageHeader
         number="06"
         eyebrow="Skills"
         title="What I can do, and where I did it."
-        intro="Every skill below is tied to a role, course or project, so you can see where it was used. Filter by category or search."
+        intro={`${total} skills in six categories: tools, hard skills, technical skills, lab skills, business & strategy, and soft skills. Most are tied to the role or project where I used them.`}
       />
       <Container className="space-y-20">
         <section aria-labelledby="top">
@@ -36,23 +39,40 @@ export default function SkillsPage() {
               </li>
             ))}
           </ul>
-          <h2 className="mt-6 font-mono text-[10px] uppercase tracking-widest text-muted">Tools</h2>
-          <ul className="mt-3 flex flex-wrap gap-2">
-            {tools.map((t) => (
-              <li key={t}>
-                <Tag>{t}</Tag>
-              </li>
+          <dl className="mt-6 grid grid-cols-3 gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-6">
+            {skillGroups.map((g) => (
+              <div key={g.id} className="flex flex-col-reverse bg-bg p-3">
+                <dt className="text-[11px] text-muted">{g.title}</dt>
+                <dd className="font-display text-2xl">{g.skills.length}</dd>
+              </div>
             ))}
-          </ul>
+          </dl>
+        </section>
+
+        <section aria-labelledby="tools">
+          <SectionHeader id="tools" number="A" title="Tools & software" intro="The software stack I work with, from analysis to design." />
+          <ToolsMarquee />
+          <div className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-5">
+            {toolGroups.map((g) => (
+              <div key={g.title} className="bg-bg p-5">
+                <h3 className="font-mono text-[10px] uppercase tracking-widest text-accent">{g.title}</h3>
+                <ul className="mt-3 space-y-1 text-sm">
+                  {g.items.map((t) => (
+                    <li key={t}>{t}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </section>
 
         <section aria-labelledby="explore">
-          <SectionHeader id="explore" number="A" title="Skill explorer" />
+          <SectionHeader id="explore" number="B" title="Skill explorer" intro="Filter by category or search a skill, tool or place." />
           <SkillsExplorer />
         </section>
 
         <section aria-labelledby="proof">
-          <SectionHeader id="proof" number="B" title="Skills in practice" intro="Grouped by what they do, with the case studies that show them." />
+          <SectionHeader id="proof" number="C" title="Skills in practice" intro="Grouped by what they do, with the case previews that show them." />
           <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-2">
             {capabilities.map((c, i) => (
               <Reveal key={c.title} className="bg-bg p-6">
@@ -83,28 +103,14 @@ export default function SkillsPage() {
           </div>
         </section>
 
-        <section aria-labelledby="certifications" id="certifications" className="scroll-mt-20">
-          <SectionHeader id="certifications-title" number="C" title="Licenses & certifications" intro={`${certifications.length} certificates across data, AI, programming and English.`} />
-          <ol className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {certifications.map((c, i) => (
-              <Reveal as="li" key={c.title} delay={(i % 3) * 60} className="flex flex-col rounded-xl border border-line bg-surface p-5 transition-colors hover:border-accent/60">
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs text-accent">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="text-[11px] text-muted">{c.category}</span>
-                </div>
-                <h3 className="mt-3 font-semibold leading-snug">{c.title}</h3>
-                <p className="mt-1 text-sm text-muted">{c.issuer}</p>
-                <div className="mt-auto flex items-center justify-between pt-4 text-xs text-muted">
-                  <span>{c.date ? `Issued ${c.date}` : ""}</span>
-                  {c.url && (
-                    <a href={c.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-accent hover:underline">
-                      Show credential <Arrow />
-                    </a>
-                  )}
-                </div>
-              </Reveal>
-            ))}
-          </ol>
+        <section aria-labelledby="certifications-title" id="certifications" className="scroll-mt-20">
+          <SectionHeader
+            id="certifications-title"
+            number="D"
+            title="Licenses & certifications"
+            intro={`${certifications.length} certificates in programming, data & AI, soft skills and language.`}
+          />
+          <CertificationGrid />
         </section>
       </Container>
     </>

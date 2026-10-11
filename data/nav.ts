@@ -4,7 +4,8 @@ export const navItems = [
   { href: "/research", label: "Research" },
   { href: "/experience", label: "Experience" },
   { href: "/about", label: "About" },
-  { href: "/resume", label: "Résumé" },
+  { href: "/resume", label: "Resume" },
   { href: "/skills", label: "Skills" },
+  { href: "/hobbies", label: "Hobbies & Activities" },
   { href: "/contact", label: "Contact" },
 ];

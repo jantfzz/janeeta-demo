@@ -1,28 +1,29 @@
 "use client";
 
 import { useState } from "react";
-import type { Experience } from "@/data/experience";
+import { experienceTypes, type Experience } from "@/data/experience";
 import ExperienceList from "./ExperienceList";
 
-const types = ["All", "Professional", "Leadership", "Volunteering"] as const;
+const tabs = ["All", ...experienceTypes] as const;
+type TabName = (typeof tabs)[number];
 
-// Tabs that filter the experience record by type.
+// Tabs that filter the experience record by category.
 export default function ExperienceFilter({ items }: { items: Experience[] }) {
-  const [type, setType] = useState<(typeof types)[number]>("All");
+  const [type, setType] = useState<TabName>("All");
   const shown = type === "All" ? items : items.filter((e) => e.type === type);
-  const count = (t: (typeof types)[number]) => (t === "All" ? items.length : items.filter((e) => e.type === t).length);
+  const count = (t: TabName) => (t === "All" ? items.length : items.filter((e) => e.type === t).length);
 
   return (
     <div>
-      <div className="mb-6 flex flex-wrap gap-1.5" role="group" aria-label="Filter experience">
-        {types.map((t) => (
+      <div className="mb-6 flex flex-wrap gap-1.5" role="group" aria-label="Filter experience by category">
+        {tabs.map((t) => (
           <button
             key={t}
             type="button"
             aria-pressed={type === t}
             onClick={() => setType(t)}
             className={`rounded-full border px-3 py-1 text-[13px] transition-colors ${
-              type === t ? "border-ink bg-ink text-bg" : "border-line text-muted hover:border-ink hover:text-ink"
+              type === t ? "border-ink bg-ink text-bg" : "border-line bg-bg text-muted hover:border-ink hover:text-ink"
             }`}
           >
             {t} <span className="ml-1 font-mono text-[10px] opacity-70">{count(t)}</span>

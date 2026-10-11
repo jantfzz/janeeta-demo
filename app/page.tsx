@@ -12,6 +12,7 @@ import ExperienceList from "@/components/ExperienceList";
 import Showcase from "@/components/ShowcaseLazy";
 import Reveal from "@/components/Reveal";
 import CountUp from "@/components/CountUp";
+import ToolsMarquee from "@/components/ToolsMarquee";
 
 export default function Home() {
   const featured = projects.find((p) => p.featured) ?? projects[0];
@@ -37,7 +38,7 @@ export default function Home() {
               Selected work <Arrow />
             </Button>
             <Button href="/resume" variant="ghost">
-              Résumé
+              Resume
             </Button>
             <Button href="/skills" variant="ghost">
               Skills
@@ -47,6 +48,9 @@ export default function Home() {
             </Button>
             <Button href="/experience" variant="ghost">
               Experience
+            </Button>
+            <Button href="/hobbies" variant="ghost">
+              Hobbies & Activities
             </Button>
             <Button href="/contact" variant="ghost">
               Contact me
@@ -116,7 +120,7 @@ export default function Home() {
             id="work-title"
             number="01"
             title="Selected work"
-            intro="Projects across research, data and business. Each case study covers the context, my role and the decisions behind the result."
+            intro="Projects across research, data and business. Each case preview covers the context, my role and the decisions behind the result."
           />
           <div className="grid gap-6 md:grid-cols-2">
             {selected.map((p, i) => (
@@ -192,6 +196,9 @@ export default function Home() {
       <section aria-labelledby="cap-title" className="py-16 md:py-20">
         <Container>
           <SectionHeader id="cap-title" number="05" title="What I work with" intro="Skills grouped by what they do, with the projects where I've used them." />
+          <div className="mb-8">
+            <ToolsMarquee />
+          </div>
           <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-2">
             {capabilities.map((c, i) => (
               <Reveal key={c.title} className="bg-bg p-6 md:p-8">
@@ -292,7 +299,7 @@ export default function Home() {
                 </dl>
                 <div className="mt-8">
                   <Button href={`/work/${featured.slug}`}>
-                    Read the case study <Arrow />
+                    Read case preview <Arrow />
                   </Button>
                 </div>
               </div>

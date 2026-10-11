@@ -47,13 +47,13 @@ export default function Nav() {
           <AnimatedLogo />
         </Link>
 
-        <ul className="hidden items-center gap-0.5 lg:flex">
+        <ul className="hidden items-center gap-0.5 xl:flex">
           {navItems.map((item, i) => (
             <li key={item.href}>
               <Link
                 href={item.href}
                 aria-current={isActive(item.href) ? "page" : undefined}
-                className={`flex items-baseline gap-1 rounded-full px-2.5 py-1.5 text-[13px] transition-colors hover:text-ink ${
+                className={`flex items-baseline gap-1 whitespace-nowrap rounded-full px-2 py-1.5 text-[13px] transition-colors hover:text-ink ${
                   isActive(item.href) ? "text-ink" : "text-muted"
                 }`}
               >
@@ -69,7 +69,7 @@ export default function Nav() {
           </li>
         </ul>
 
-        <div className="flex items-center gap-2 lg:hidden">
+        <div className="flex items-center gap-2 xl:hidden">
           <span className="hidden sm:block">
             <ThemeSwitcher />
           </span>
@@ -97,7 +97,7 @@ export default function Nav() {
       </div>
 
       {open && (
-        <div id="mobile-menu" className="h-[calc(100dvh-3.5rem)] overflow-y-auto border-t border-line bg-bg px-4 pb-10 lg:hidden">
+        <div id="mobile-menu" className="h-[calc(100dvh-3.5rem)] overflow-y-auto border-t border-line bg-bg px-4 pb-10 xl:hidden">
           <ul className="divide-y divide-line">
             {navItems.map((item, i) => (
               <li key={item.href}>

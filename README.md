@@ -29,13 +29,15 @@ npm run dev        # http://localhost:3000
 | Navbar items | `data/nav.ts` |
 | Animated logo words, stats, education, Instagram | `data/site.ts` |
 | Interactive showcase data | `data/showcase.ts` |
+| Hobbies & Activities (Strava, races, books, movies, songs) | `data/hobbies.ts` |
 
 - **Certificate links:** add `url: "https://..."` to a certification in `data/recognition.ts` to show a "Show credential" button.
 - **GitHub button:** add your URL to `links.github` in `data/site.ts`. Empty links are hidden.
 - **Project images:** put a screenshot in `public/` and add `image: "/file.png"` to the project. Without one, a generated illustration is shown.
 - **Demo / Source buttons:** add `demo` or `source` URLs to a project.
 - **Trial explorer (TA-1):** the values in `trialMetrics` are SAMPLE numbers. Replace them with your real measurements, then set `trialIsSample = false`.
-- **Résumé PDF:** replace `public/Janeeta-Faiza-CV.pdf`.
+- **Resume PDF:** replace `public/Janeeta-Faiza-CV.pdf`.
+- **Experience photos:** add `photos: ["/exp/file.jpg"]` to a role in `data/experience.ts` to show a gallery in its details window.
 - **Photo:** replace `public/portrait.jpg`.
 - **Accent color:** change `--accent` (and `--series-*`) in `app/globals.css`.
 

@@ -6,7 +6,7 @@ import { Arrow, Container, Tag } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: `Get in touch with ${site.name}: email, LinkedIn and Instagram.`,
+  description: `Get in touch with ${site.name}: email, LinkedIn, Instagram and YouTube.`,
 };
 
 export default function ContactPage() {
@@ -14,13 +14,15 @@ export default function ContactPage() {
     { label: "Email", value: site.links.email, href: `mailto:${site.links.email}`, note: "Best for roles and collaborations" },
     site.links.linkedin && { label: "LinkedIn", value: "in/janeeta-faiza", href: site.links.linkedin, note: "Experience, endorsements, certificates" },
     site.links.instagram && { label: "Instagram", value: site.links.instagramHandle, href: site.links.instagram, note: "Day-to-day and creative work" },
+    site.links.youtube && { label: "YouTube", value: site.links.youtubeHandle, href: site.links.youtube, note: "My YouTube channel" },
+    site.links.strava && { label: "Strava", value: "Janeeta Faiza", href: site.links.strava, note: "Runs around Bandung and beyond" },
     { label: "Location", value: site.location, note: "Open to on-site, hybrid and remote" },
   ].filter(Boolean) as { label: string; value: string; href?: string; note: string }[];
 
   return (
     <>
       <PageHeader
-        number="07"
+        number="08"
         eyebrow="Contact"
         title="Let’s work together."
         intro="Hiring for a data, business or agri-tech role, or have a research idea? Send me a message and I’ll reply by email."
