@@ -10,11 +10,11 @@ export const site = {
   location: "Bandung, West Java, Indonesia",
 
   // Words the animated header logo types out, one after another.
-  logoWords: ["janeeta.faiza", "data analyst", "agri-tech", "lab geek"],
+  logoWords: ["janeeta.faiza", "data analyst", "agri-tech", "lab geek", "engineer", "r&d specialist"],
 
-  headline: "I analyze lab data and field systems into statistical insights and business decisions.",
+  headline: "Explore, Learn, and Make Impact.",
   intro:
-    "I'm Janeeta, a Bio-Agricultural Engineering graduate from ITB. I work across data analytics, business intelligence and go-to-market planning, grounded in hands-on microbiology lab work and agricultural systems research.",
+    "I'm Janeeta, I analyze lab data and field systems into statistical insights and business decisions. I work across data analytics, business intelligence and go-to-market planning, grounded in hands-on microbiology lab work and agricultural systems research.",
 
   quickFacts: [
     { label: "Current focus", value: "Data analytics & business intelligence" },
