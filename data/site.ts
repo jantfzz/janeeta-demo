@@ -19,7 +19,6 @@ export const site = {
   quickFacts: [
     { label: "Current focus", value: "Data analytics & business intelligence" },
     { label: "Education", value: "Bio-Agricultural Engineering, ITB" },
-    { label: "GPA", value: "3.39 / 4.00" },
     { label: "Leadership", value: "Treasurer & Head of Fundraising, KPA-ITB" },
   ],
 
