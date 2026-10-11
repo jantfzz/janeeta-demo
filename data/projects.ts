@@ -1,6 +1,13 @@
 // Each project gets a card on /work and its own case-study page at /work/[slug].
-// Optional fields: image (put a file in /public and write "/my-image.png"),
-// demo, source. Empty or missing links hide their buttons.
+// Optional fields:
+//   image     main cover photo (put a file in /public and write "/projects/…/main.jpg")
+//   gallery   extra images shown as a stack of cards on the case page
+//   documents links to the full reports / decks, shown as buttons
+//   demo, source. Empty or missing links hide their buttons.
+// Projects without an image get a generated, animated illustration.
+
+const g = (slug: string, n: number) =>
+  Array.from({ length: n }, (_, i) => `/projects/${slug}/${String(i + 1).padStart(2, "0")}.jpg`);
 
 export type Project = {
   slug: string;
@@ -10,6 +17,10 @@ export type Project = {
   year: string;
   organization: string;
   image?: string;
+  imageFit?: "cover" | "contain";
+  gallery?: string[];
+  galleryLabel?: string;
+  documents?: { label: string; url: string }[];
   demo?: string;
   source?: string;
   featured?: boolean;
@@ -25,6 +36,11 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "integrated-urban-farming-system",
+    image: "/projects/integrated-urban-farming-system/main.jpg",
+    imageFit: "contain",
+    gallery: g("integrated-urban-farming-system", 11),
+    galleryLabel: "Slides from the TA-2 design presentation",
+    documents: [{ label: "TA-2 document", url: "https://drive.google.com/file/d/1_G0Wzy2Qcv9w98Fca7EooFop32m2hcpR/view" }],
     title: "Integrated Urban Farming System",
     summary:
       "A four-subsystem urban farm design for Pasanggrahan, Bandung, chosen by AHP and tested with a 10-year financial model.",
@@ -59,6 +75,15 @@ export const projects: Project[] = [
   },
   {
     slug: "pgpr-biochar-lettuce",
+    image: "/projects/pgpr-biochar-lettuce/main.jpg",
+    gallery: g("pgpr-biochar-lettuce", 12),
+    galleryLabel: "TA-1 slides and lab work",
+    documents: [
+      {
+        label: "Thesis on ITB Digital Library",
+        url: "https://digilib.itb.ac.id/gdl/view_data/kuantifikasi-pertumbuhan-hasil-biomassa-dan-neraca-massa-energi-budidaya-tanaman-selada-lactuca-sativa-l-var-new-grand-rapids-dengan-media-tanam-biochar-sekam-padi-dan-plant-growth-promoting-rhizobacteria-pgpr-11422027",
+      },
+    ],
     title: "PGPR & Rice-Husk Biochar Trial",
     summary:
       "A controlled greenhouse experiment testing whether growth-promoting bacteria and biochar help green lettuce more alone or together.",
@@ -92,6 +117,13 @@ export const projects: Project[] = [
   },
   {
     slug: "tomato-leaf-disease-ml",
+    image: "/projects/tomato-leaf-disease-ml/main.jpg",
+    gallery: g("tomato-leaf-disease-ml", 8),
+    galleryLabel: "Slides and data work from Inari Studio Digital",
+    documents: [
+      { label: "Task 1 document", url: "https://drive.google.com/file/d/1dmYyZbIVa_OiY4A35MHJjpvkl8HDI1HH/view" },
+      { label: "Task 2 document", url: "https://drive.google.com/file/d/13TT5uT5ufeUf3YyoV5g8BpETP_AmaDw9/view" },
+    ],
     title: "ML for Precision Farming: Tomato Leaf Disease",
     summary:
       "A machine-learning project that identifies tomato leaf diseases from images, built on scraped and image-processed crop data.",
@@ -154,6 +186,9 @@ export const projects: Project[] = [
   },
   {
     slug: "kpa-seasonal-event-fundraising",
+    image: "/projects/kpa-seasonal-event-fundraising/main.jpg",
+    gallery: g("kpa-seasonal-event-fundraising", 6),
+    galleryLabel: "KPA-ITB in Concert 2025",
     title: "Fundraising & Budget for a Seasonal Concert",
     summary:
       "Led fundraising strategy and budget control for KPA-ITB's seasonal event: revenue up 60%, finished 15% under budget.",
@@ -181,6 +216,14 @@ export const projects: Project[] = [
   },
   {
     slug: "landsat-land-cover-analysis",
+    image: "/projects/landsat-land-cover-analysis/main.jpg",
+    imageFit: "contain",
+    gallery: g("landsat-land-cover-analysis", 9),
+    galleryLabel: "Remote Sensing & GIS slides and ArcGIS steps",
+    documents: [
+      { label: "Task 1 document", url: "https://drive.google.com/file/d/1rAcHtQvm431C_NPpeC_4ojYamNhHMQUb/view" },
+      { label: "Task 2: individual imagery assignment", url: "https://drive.google.com/file/d/14Rz69f0LE1hGBokiFFLNX33rY8ngHBk1/view" },
+    ],
     title: "Land-Cover Classification with Landsat",
     summary:
       "Classified Landsat imagery to map land cover in Bangka Belitung and land-cover change in Sumedang.",
@@ -209,6 +252,9 @@ export const projects: Project[] = [
   },
   {
     slug: "growth-chamber-kit",
+    image: "/projects/growth-chamber-kit/main.jpg",
+    gallery: g("growth-chamber-kit", 9),
+    galleryLabel: "Sketches, build and testing",
     title: "The Growth Chamber Kit",
     summary:
       "A team-built plant growth chamber kit, taken from sketch to physical prototype at ITB.",

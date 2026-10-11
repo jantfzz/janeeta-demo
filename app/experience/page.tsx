@@ -6,6 +6,7 @@ import { site } from "@/data/site";
 import PageHeader from "@/components/PageHeader";
 import ExperienceFilter from "@/components/ExperienceFilter";
 import { Arrow, Container, SectionHeader } from "@/components/ui";
+import SchoolLogo from "@/components/SchoolLogo";
 
 export const metadata: Metadata = {
   title: "Experience",
@@ -30,11 +31,14 @@ export default function ExperiencePage() {
           <SectionHeader id="edu" number="B" title="Education" />
           <ul className="grid gap-4 md:grid-cols-2">
             {site.education.map((e) => (
-              <li key={e.school} className="rounded-2xl border border-line p-6">
-                <p className="font-mono text-xs text-muted">{e.period}</p>
-                <h3 className="mt-2 font-display text-lg tracking-tight">{e.school}</h3>
-                <p className="mt-1 text-sm font-semibold">{e.degree}</p>
-                <p className="mt-1 text-sm text-muted">{e.detail}</p>
+              <li key={e.school} className="flex gap-4 rounded-2xl border border-line p-6">
+                <SchoolLogo src={e.logo} name={e.school} size={56} />
+                <div>
+                  <p className="font-mono text-xs text-muted">{e.period}</p>
+                  <h3 className="mt-2 font-display text-lg tracking-tight">{e.school}</h3>
+                  <p className="mt-1 text-sm font-semibold">{e.degree}</p>
+                  <p className="mt-1 text-sm text-muted">{e.detail}</p>
+                </div>
               </li>
             ))}
           </ul>

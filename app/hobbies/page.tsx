@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import {
   bookGenres,
   books,
@@ -6,13 +7,19 @@ import {
   community,
   hobbiesIntro,
   movies,
+  personalBests,
+  photography,
   racketSports,
   races,
   runningStyles,
   songs,
   strava,
+  writing,
 } from "@/data/hobbies";
+import { getMediumPosts } from "@/lib/writing";
 import PageHeader from "@/components/PageHeader";
+import StravaWidget from "@/components/StravaWidget";
+import { Icon as UiIcon } from "@/components/Icons";
 import Reveal from "@/components/Reveal";
 import { Arrow, Button, Container, SectionHeader, Tag } from "@/components/ui";
 
@@ -82,17 +89,16 @@ function Icon({ name }: { name: "road" | "trail" | "tennis" | "padel" | "pickle"
   );
 }
 
-export default function HobbiesPage() {
-  const maxH = Math.max(...strava.weeklyHours.map((w) => w.hours));
-  const totalMin = Math.round(strava.weeklyHours.reduce((s, w) => s + w.hours, 0) * 60);
+export default async function HobbiesPage() {
   const racketIcons = ["tennis", "padel", "pickle"] as const;
+  const posts = await getMediumPosts("janeetafz");
 
   return (
     <>
       <PageHeader number="07" eyebrow="Hobbies & Activities" title={hobbiesIntro.title} intro={hobbiesIntro.text} />
       <Container className="space-y-24">
         <ul className="-mt-6 flex flex-wrap gap-2" aria-label="What I do for fun">
-          {["Road running", "Trail running", "Mountains", "Tennis", "Padel", "Pickleball", "Reading"].map((h) => (
+          {["Road running", "Trail running", "Mountains", "Tennis", "Padel", "Pickleball", "Reading", "Writing", "Photography"].map((h) => (
             <li key={h}>
               <Tag>{h}</Tag>
             </li>
@@ -103,94 +109,66 @@ export default function HobbiesPage() {
         <section aria-labelledby="running">
           <SectionHeader id="running" number="A" title="Running" intro="Road running and trail running are where I recharge: early city loops in Bandung, and hills and forest paths whenever I can get out of town." />
 
-          <div className="grid gap-4 lg:grid-cols-[1fr_1fr_1.2fr]">
+          <div className="grid gap-4 md:grid-cols-2">
             {runningStyles.map((r, i) => (
-              <Reveal key={r.title} delay={i * 80} className="rounded-2xl border border-line bg-surface p-6">
+              <Reveal key={r.title} delay={i * 80} className="flex gap-4 rounded-2xl border border-line bg-surface p-6">
                 <Icon name={i === 0 ? "road" : "trail"} />
-                <h3 className="mt-4 font-display text-lg tracking-tight">{r.title}</h3>
-                <p className="mt-1 text-sm text-muted">{r.text}</p>
+                <div>
+                  <h3 className="font-display text-lg tracking-tight">{r.title}</h3>
+                  <p className="mt-1 text-sm text-muted">{r.text}</p>
+                </div>
               </Reveal>
             ))}
-            <Reveal delay={160} className="flex flex-col rounded-2xl bg-ink p-6 text-bg">
-              <p className="font-mono text-[10px] uppercase tracking-widest opacity-70">On Strava · {strava.location}</p>
-              <p className="mt-3 font-display text-5xl">{strava.activitiesLast4Weeks}</p>
-              <p className="text-sm opacity-80">activities in the last 4 weeks</p>
-              <div className="mt-4 grid grid-cols-2 gap-3 text-sm">
-                <div>
-                  <p className="font-display text-2xl">{strava.activitiesPerWeek}</p>
-                  <p className="text-xs opacity-70">activities / week</p>
-                </div>
-                <div>
-                  <p className="font-display text-2xl">{strava.avgDistancePerWeekKm} km</p>
-                  <p className="text-xs opacity-70">avg distance / week</p>
-                </div>
-              </div>
-              <a
-                href={strava.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-5 inline-flex w-fit items-center gap-1.5 rounded-full bg-bg px-4 py-2 text-[13px] font-medium text-ink transition-colors hover:bg-accent hover:text-accent-ink"
-              >
-                Follow me on Strava <Arrow />
-              </a>
-            </Reveal>
           </div>
 
-          <div className="mt-14 space-y-14">
-            <Sub n="01" title="Training log">
-              <div className="grid gap-8 lg:grid-cols-[1.2fr_1fr]">
-                <div>
-                  <p className="text-sm text-muted">
-                    Moving time per week, last 4 weeks · {Math.floor(totalMin / 60)}h {totalMin % 60}m in total
-                  </p>
-                  <dl className="mt-4 space-y-3">
-                    {strava.weeklyHours.map((w) => (
-                      <div key={w.week} className="grid grid-cols-[96px_1fr_64px] items-center gap-3 text-sm">
-                        <dt className="text-muted">{w.week}</dt>
-                        <dd className="h-3 overflow-hidden rounded-full bg-surface-2" aria-hidden="true">
-                          <span className="block h-full rounded-full bg-accent" style={{ width: `${(w.hours / maxH) * 100}%` }} />
-                        </dd>
-                        <dd className="text-right font-mono text-xs">{w.label}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                  <p className="mt-3 text-xs text-muted">Snapshot from Strava, {strava.asOf}. “This week” is still in progress.</p>
-                </div>
-                <div>
-                  <p className="text-sm text-muted">Local segment achievements</p>
-                  <ul className="mt-4 divide-y divide-line border-y border-line">
-                    {strava.segments.map((s) => (
-                      <li key={s.name} className="flex items-baseline justify-between gap-3 py-2.5 text-sm">
-                        <span>
-                          {s.name}
-                          <span className="block text-xs text-muted">{s.result}</span>
-                        </span>
-                        <span className="font-mono text-xs">{s.time}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </Sub>
+          <Reveal className="mt-4">
+            <StravaWidget />
+          </Reveal>
 
-            <Sub n="02" title="Race">
-              {races.length > 0 ? (
-                <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                  {races.map((r) => (
-                    <li key={r.name} className="rounded-xl border border-line bg-surface p-5">
+          <div className="mt-14 space-y-14">
+            <Sub n="01" title="Race">
+              <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line lg:grid-cols-4">
+                {personalBests.map((p) => (
+                  <div key={p.label} className="flex flex-col-reverse bg-bg p-5">
+                    <dt className="mt-1 text-xs text-muted">
+                      {p.label} · {p.detail}
+                    </dt>
+                    <dd className="font-display text-2xl text-accent">{p.value}</dd>
+                  </div>
+                ))}
+              </dl>
+
+              <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                {races.map((r) => (
+                  <li key={r.name} className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-surface">
+                    {r.photo && (
+                      <div className="relative aspect-[4/5] overflow-hidden bg-surface-2">
+                        <Image
+                          src={r.photo}
+                          alt={`Janeeta at ${r.name}`}
+                          fill
+                          sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                          className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                        />
+                        <span className="absolute left-3 top-3 rounded-full bg-bg/90 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-ink">
+                          {r.category}
+                        </span>
+                      </div>
+                    )}
+                    <div className="flex flex-1 flex-col p-4">
                       <p className="font-mono text-xs text-muted">{r.date}</p>
-                      <p className="mt-1 font-semibold">{r.name}</p>
-                      <p className="mt-1 text-sm text-muted">
-                        {r.distance}
-                        {r.time && ` · ${r.time}`}
+                      <p className="mt-1 font-semibold leading-snug">{r.name}</p>
+                      <p className="mt-2 font-mono text-xs">
+                        {r.distanceKm.toFixed(2)} km · {r.time}
+                        {r.pace && ` · ${r.pace}`}
+                        {r.elevation && ` · ${r.elevation}`}
                       </p>
-                      {r.note && <p className="mt-2 text-sm">{r.note}</p>}
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <Empty>My race log is coming soon: road and trail races with distance and finish time.</Empty>
-              )}
+                      {r.note && <p className="mt-2 text-sm text-accent">{r.note}</p>}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+
               <p className="mt-8 text-sm text-muted">Milestones: Strava challenges completed</p>
               <ol className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
                 {challenges.map((c) => (
@@ -203,13 +181,11 @@ export default function HobbiesPage() {
               </ol>
             </Sub>
 
-            <Sub n="03" title="Community">
-              <ul className="grid gap-4 md:grid-cols-2">
+            <Sub n="02" title="Community">
+              <ul className="flex flex-wrap gap-3">
                 {community.map((c) => (
-                  <li key={c.title} className="rounded-2xl border border-line bg-surface p-6">
-                    <p className="font-mono text-[10px] uppercase tracking-widest text-accent">{c.role}</p>
-                    <h4 className="mt-2 font-display text-lg tracking-tight">{c.title}</h4>
-                    <p className="mt-1 text-sm text-muted">{c.text}</p>
+                  <li key={c} className="rounded-full border border-line bg-surface px-5 py-2.5 font-display text-lg tracking-tight">
+                    {c}
                   </li>
                 ))}
               </ul>
@@ -282,6 +258,78 @@ export default function HobbiesPage() {
               </div>
             ))}
           </div>
+        </section>
+
+        {/* WRITING */}
+        <section aria-labelledby="writing">
+          <SectionHeader id="writing" number="E" title="I also write things" intro="Essays, notes and the occasional long read." />
+          <ul className="grid gap-4 md:grid-cols-2">
+            {writing.map((w, i) => (
+              <Reveal as="li" key={w.platform} delay={i * 80}>
+                <a
+                  href={w.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex h-full items-center gap-5 rounded-2xl border border-line bg-surface p-6 transition-colors hover:border-accent"
+                >
+                  <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-ink text-bg">
+                    <UiIcon name={w.icon} size={26} />
+                  </span>
+                  <span className="flex-1">
+                    <span className="block font-display text-xl tracking-tight">{w.platform}</span>
+                    <span className="block font-mono text-xs text-muted">{w.handle}</span>
+                    <span className="mt-1 block text-sm text-muted">{w.text}</span>
+                  </span>
+                  <Arrow className="h-4 w-4 text-accent transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </a>
+              </Reveal>
+            ))}
+          </ul>
+          {posts.length > 0 && (
+            <div className="mt-6">
+              <p className="font-mono text-[11px] uppercase tracking-widest text-muted">Latest on Medium</p>
+              <ul className="mt-3 divide-y divide-line border-y border-line">
+                {posts.map((p) => (
+                  <li key={p.url}>
+                    <a href={p.url} target="_blank" rel="noopener noreferrer" className="flex items-baseline justify-between gap-4 py-3 hover:text-accent">
+                      <span className="font-semibold">{p.title}</span>
+                      <span className="shrink-0 font-mono text-xs text-muted">
+                        {p.date && new Date(p.date).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </section>
+
+        {/* PHOTOGRAPHY */}
+        <section aria-labelledby="photography">
+          <SectionHeader id="photography" number="F" title="I also like photography and documenting things" />
+          <Reveal>
+            <a
+              href={photography.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative flex flex-col gap-6 overflow-hidden rounded-3xl border border-line bg-surface p-8 transition-colors hover:border-accent md:flex-row md:items-center"
+            >
+              <span aria-hidden="true" className="pointer-events-none absolute -right-10 -top-10 h-48 w-48 rounded-full border-[18px] border-accent/15" />
+              <span className="relative grid h-20 w-20 shrink-0 place-items-center rounded-3xl bg-ink text-bg">
+                <UiIcon name="camera" size={34} />
+              </span>
+              <span className="relative flex-1">
+                <span className="flex items-center gap-2 font-mono text-xs text-muted">
+                  <UiIcon name="instagram" size={14} /> Instagram · {photography.handle}
+                </span>
+                <span className="mt-2 block font-display text-2xl tracking-tight">See the photo diary</span>
+                <span className="mt-1 block text-sm text-muted">{photography.text}</span>
+              </span>
+              <span className="relative inline-flex w-fit items-center gap-1.5 rounded-full bg-ink px-4 py-2 text-[13px] font-medium text-bg transition-colors group-hover:bg-accent group-hover:text-accent-ink">
+                Open Instagram <Arrow />
+              </span>
+            </a>
+          </Reveal>
         </section>
 
         <Reveal className="rounded-3xl border border-line bg-surface p-8 text-center">

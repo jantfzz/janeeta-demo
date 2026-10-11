@@ -235,8 +235,8 @@ export default function Home() {
         <Container>
           <div className="grid items-start gap-10 border-t border-line pt-8 md:grid-cols-[0.8fr_1.2fr] md:gap-16">
             <Reveal className="relative">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-surface-2">
-                <Image src="/portrait.jpg" alt={`Portrait of ${site.name}`} fill sizes="(min-width: 768px) 40vw, 100vw" className="object-cover object-top" />
+              <div className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-surface-2">
+                <Image src="/portrait.jpg" alt={`${site.name} at ITB`} fill sizes="(min-width: 768px) 40vw, 100vw" className="object-cover object-[50%_72%]" />
               </div>
               <span aria-hidden="true" className="absolute -bottom-4 -right-2 font-display text-6xl text-accent md:-right-6">
                 06

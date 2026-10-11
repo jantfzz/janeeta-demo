@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProject, projects } from "@/data/projects";
 import ProjectCover from "@/components/ProjectCover";
+import CardStack from "@/components/CardStack";
+import { Icon } from "@/components/Icons";
 import Reveal from "@/components/Reveal";
 import { Arrow, Button, Container, Tag } from "@/components/ui";
 
@@ -62,9 +64,14 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
               Source <Arrow />
             </Button>
           )}
+          {project.documents?.map((d, i) => (
+            <Button key={d.url} href={d.url} external variant={i === 0 ? "primary" : "ghost"}>
+              <Icon name="file" size={15} /> {d.label} <Arrow />
+            </Button>
+          ))}
         </div>
 
-        <ProjectCover project={project} index={index} priority className="mt-10 aspect-[16/8] rounded-2xl border border-line" />
+        <ProjectCover project={project} index={index} priority fit="contain" className="mt-10 aspect-[16/9] rounded-2xl border border-line md:aspect-[16/8]" />
 
         <dl className="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-3">
           {project.metrics.map((m) => (
@@ -115,6 +122,45 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
             </ul>
           </Block>
         </div>
+
+        {project.gallery && project.gallery.length > 0 && (
+          <Reveal as="section" className="border-t border-line py-12">
+            <h2 id="gallery-title" className="flex items-baseline gap-3 font-display text-xl tracking-tight">
+              <span className="font-mono text-sm text-accent">07</span>
+              Gallery
+            </h2>
+            {project.galleryLabel && <p className="mt-1 text-sm text-muted">{project.galleryLabel}</p>}
+            <div className="mt-10">
+              <CardStack images={project.gallery} title={project.title} />
+            </div>
+          </Reveal>
+        )}
+
+        {project.documents && project.documents.length > 0 && (
+          <Reveal as="section" className="border-t border-line py-10">
+            <h2 id="docs-title" className="font-display text-xl tracking-tight">
+              Read the full work
+            </h2>
+            <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+              {project.documents.map((d) => (
+                <li key={d.url}>
+                  <a
+                    href={d.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 rounded-xl border border-line bg-surface p-4 transition-colors hover:border-accent"
+                  >
+                    <span className="grid h-10 w-10 place-items-center rounded-lg bg-accent-soft text-accent">
+                      <Icon name="file" size={18} />
+                    </span>
+                    <span className="flex-1 text-sm font-semibold">{d.label}</span>
+                    <Arrow className="text-accent" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+        )}
 
         <Link
           href={`/work/${next.slug}`}

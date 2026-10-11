@@ -10,16 +10,16 @@ export const site = {
   location: "Bandung, West Java, Indonesia",
 
   // Words the animated header logo types out, one after another.
-  logoWords: ["janeeta.faiza", "data analyst", "agri-tech", "lab geek", "engineer", "r&d specialist"],
+  logoWords: ["janeeta.faiza", "data analyst", "agri-tech", "lab geek"],
 
-  headline: "Explore, Learn, and Make Impact.",
+  headline: "I analyze lab data and field systems into statistical insights and business decisions.",
   intro:
-    "I'm Janeeta, I analyze lab data and field systems into statistical insights and business decisions. I work across data analytics, business intelligence and go-to-market planning, grounded in hands-on microbiology lab work and agricultural systems research.",
+    "I'm Janeeta, a Bio-Agricultural Engineering graduate from ITB. I work across data analytics, business intelligence and go-to-market planning, grounded in hands-on microbiology lab work and agricultural systems research.",
 
   quickFacts: [
-    { label: "Current focus", value: "Data analytics, Business intelligence, Applied AI, Lab R&D, Food Science, QC/QA, SCM" },
+    { label: "Current focus", value: "Data analytics & business intelligence" },
     { label: "Education", value: "Bio-Agricultural Engineering, ITB" },
-    { label: "School of Life Sciences and Technology - Engineering", value: "Aug 2022 - Aug 2026" },
+    { label: "GPA", value: "3.39 / 4.00" },
     { label: "Leadership", value: "Treasurer & Head of Fundraising, KPA-ITB" },
   ],
 
@@ -39,6 +39,9 @@ export const site = {
     youtube: "https://www.youtube.com/@jantfzz",
     youtubeHandle: "@jantfzz",
     strava: "https://www.strava.com/athletes/107550573",
+    medium: "https://medium.com/@janeetafz",
+    substack: "https://substack.com/@jantfzz",
+    photography: "https://www.instagram.com/helium.jump/",
     github: "", // add your GitHub URL here to show the button
   },
 
@@ -68,12 +71,16 @@ export const site = {
       degree: "Bachelor of Engineering, Bio-Agricultural Engineering",
       detail: "School of Life Sciences and Technology · GPA 3.39 / 4.00",
       period: "2022 – 2026",
+      logo: "/logos/itb.png",
+      short: "ITB",
     },
     {
       school: "Mutiara Bunda Senior High School",
       degree: "High School Diploma, Mathematics and Natural Sciences",
       detail: "Journalism club; Class Representative Council (MPK)",
       period: "2019 – 2022",
+      logo: "/logos/mutbun-mark.png",
+      short: "MB",
     },
   ],
 

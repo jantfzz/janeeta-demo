@@ -4,6 +4,7 @@ import { site } from "@/data/site";
 import { capabilities } from "@/data/capabilities";
 import PageHeader from "@/components/PageHeader";
 import Reveal from "@/components/Reveal";
+import SchoolLogo from "@/components/SchoolLogo";
 import { Arrow, Button, Container, Tag } from "@/components/ui";
 
 export const metadata: Metadata = {
@@ -18,8 +19,8 @@ export default function AboutPage() {
       <Container>
         <div className="grid items-start gap-10 md:grid-cols-[0.8fr_1.2fr] md:gap-16">
           <Reveal>
-            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-surface-2">
-              <Image src="/portrait.jpg" alt={`Portrait of ${site.name}`} fill priority sizes="(min-width: 768px) 40vw, 100vw" className="object-cover object-top" />
+            <div className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-surface-2">
+              <Image src="/portrait.jpg" alt={`${site.name} at ITB`} fill priority sizes="(min-width: 768px) 40vw, 100vw" className="object-cover object-[50%_72%]" />
             </div>
           </Reveal>
           <Reveal delay={100}>
@@ -70,11 +71,9 @@ export default function AboutPage() {
           <Reveal className="rounded-3xl border border-line bg-surface p-7">
             <h2 className="font-mono text-[11px] uppercase tracking-widest text-muted">Education</h2>
             <ul className="mt-5 space-y-6">
-              {site.education.map((e, i) => (
+              {site.education.map((e) => (
                 <li key={e.school} className="flex gap-4">
-                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-accent-soft font-display text-accent">
-                    {i === 0 ? "ITB" : "SMA"}
-                  </span>
+                  <SchoolLogo src={e.logo} name={e.school} size={52} />
                   <div>
                     <p className="font-semibold">{e.school}</p>
                     <p className="font-display text-accent">{e.degree}</p>

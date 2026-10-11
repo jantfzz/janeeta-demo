@@ -170,3 +170,18 @@ body {
   border-radius: 10px;
   color: var(--text);
 }
+
+/* Animated go-to-market cover */
+.gtm-label { font: 600 11px var(--font-mono, monospace); letter-spacing: .12em; fill: var(--muted); }
+.gtm-value { font: 600 22px var(--font-display, serif); fill: var(--accent); }
+.gtm-bar { transform-box: fill-box; transform-origin: bottom; animation: gtm-grow 4.8s ease-in-out infinite; }
+.gtm-pulse { transform-box: fill-box; transform-origin: center; animation: gtm-pulse 3.2s ease-in-out infinite; }
+.gtm-line { stroke-dasharray: 320; stroke-dashoffset: 320; animation: gtm-draw 4.8s ease-in-out infinite; }
+.gtm-dot { transform-box: fill-box; transform-origin: center; animation: gtm-dot 4.8s ease-in-out infinite; }
+@keyframes gtm-grow { 0% { transform: scaleY(.15); } 35%, 80% { transform: scaleY(1); } 100% { transform: scaleY(.15); } }
+@keyframes gtm-pulse { 0%, 100% { transform: scale(.9); opacity: .7; } 50% { transform: scale(1.08); opacity: 1; } }
+@keyframes gtm-draw { 0%, 20% { stroke-dashoffset: 320; } 65%, 85% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 320; } }
+@keyframes gtm-dot { 0%, 55% { transform: scale(0); } 65%, 85% { transform: scale(1); } 100% { transform: scale(0); } }
+@media (prefers-reduced-motion: reduce) {
+  .gtm-bar, .gtm-pulse, .gtm-line, .gtm-dot { animation: none; transform: none; stroke-dashoffset: 0; }
+}

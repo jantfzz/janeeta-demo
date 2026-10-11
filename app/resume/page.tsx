@@ -4,6 +4,7 @@ import { experience, experienceTypes } from "@/data/experience";
 import { certificationCategories, certifications, recognition } from "@/data/recognition";
 import { skillGroups } from "@/data/skills";
 import PageHeader from "@/components/PageHeader";
+import SchoolLogo from "@/components/SchoolLogo";
 import { Button, Container } from "@/components/ui";
 
 export const metadata: Metadata = {
@@ -42,18 +43,21 @@ export default function ResumePage() {
                   </a>
                 </li>
                 {site.links.linkedin && <li>linkedin.com/in/janeeta-faiza</li>}
-                {site.links.instagram && <li>Instagram {site.links.instagramHandle}</li>}
-                {site.links.youtube && <li>YouTube {site.links.youtubeHandle}</li>}
+                {site.links.instagram && <li>instagram.com/jantfzz</li>}
+                {site.links.youtube && <li>youtube.com/@jantfzz</li>}
               </ul>
             </div>
 
             <div>
               <Heading>Education</Heading>
               {site.education.map((e) => (
-                <div key={e.school} className="mt-3">
-                  <p className="font-semibold">{e.school}</p>
-                  <p className="text-muted">{e.degree}</p>
-                  <p className="text-xs text-muted">{e.period}</p>
+                <div key={e.school} className="mt-3 flex gap-3">
+                  <SchoolLogo src={e.logo} name={e.school} size={36} />
+                  <div>
+                    <p className="font-semibold">{e.school}</p>
+                    <p className="text-muted">{e.degree}</p>
+                    <p className="text-xs text-muted">{e.period}</p>
+                  </div>
                 </div>
               ))}
             </div>
