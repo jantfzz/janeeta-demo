@@ -3,15 +3,19 @@ import { site } from "@/data/site";
 import { navItems } from "@/data/nav";
 import { Container } from "./ui";
 import BackToTop from "./BackToTop";
+import { Icon, type IconName } from "./Icons";
 
 export default function Footer() {
   const social = [
-    site.links.linkedin && { href: site.links.linkedin, label: "LinkedIn" },
-    site.links.instagram && { href: site.links.instagram, label: "Instagram" },
-    site.links.youtube && { href: site.links.youtube, label: "YouTube" },
-    site.links.strava && { href: site.links.strava, label: "Strava" },
-    site.links.github && { href: site.links.github, label: "GitHub" },
-  ].filter(Boolean) as { href: string; label: string }[];
+    site.links.linkedin && { href: site.links.linkedin, label: "LinkedIn", icon: "linkedin" },
+    site.links.instagram && { href: site.links.instagram, label: "Instagram", icon: "instagram" },
+    site.links.youtube && { href: site.links.youtube, label: "YouTube", icon: "youtube" },
+    site.links.strava && { href: site.links.strava, label: "Strava", icon: "strava" },
+    site.links.medium && { href: site.links.medium, label: "Medium", icon: "medium" },
+    site.links.substack && { href: site.links.substack, label: "Substack", icon: "substack" },
+    site.links.github && { href: site.links.github, label: "GitHub", icon: "github" },
+  ].filter(Boolean) as { href: string; label: string; icon: IconName }[];
+  const row = "inline-flex items-center gap-2";
 
   return (
     <footer className="mt-24 border-t border-line">
@@ -31,7 +35,8 @@ export default function Footer() {
           <ul className="mt-3 grid grid-cols-2 gap-x-4 gap-y-1.5 text-sm">
             {navItems.map((n) => (
               <li key={n.href}>
-                <Link href={n.href} className="text-muted hover:text-ink">
+                <Link href={n.href} className={`${row} text-muted hover:text-ink`}>
+                  <Icon name={n.icon} size={14} />
                   {n.label}
                 </Link>
               </li>
@@ -43,25 +48,31 @@ export default function Footer() {
           <h2 className="font-mono text-[10px] uppercase tracking-widest text-muted">Contact</h2>
           <ul className="mt-3 space-y-1.5 text-sm">
             <li>
-              <a href={`mailto:${site.links.email}`} className="text-ink hover:text-accent">
+              <a href={`mailto:${site.links.email}`} className={`${row} text-ink hover:text-accent`}>
+                <Icon name="mail" size={14} />
                 {site.links.email}
               </a>
             </li>
             {site.links.instagram && (
               <li>
-                <a href={site.links.instagram} target="_blank" rel="noopener noreferrer" className="text-ink hover:text-accent">
-                  Instagram {site.links.instagramHandle}
+                <a href={site.links.instagram} target="_blank" rel="noopener noreferrer" className={`${row} text-ink hover:text-accent`}>
+                  <Icon name="instagram" size={14} />
+                  Instagram
                 </a>
               </li>
             )}
             {site.links.youtube && (
               <li>
-                <a href={site.links.youtube} target="_blank" rel="noopener noreferrer" className="text-ink hover:text-accent">
-                  YouTube {site.links.youtubeHandle}
+                <a href={site.links.youtube} target="_blank" rel="noopener noreferrer" className={`${row} text-ink hover:text-accent`}>
+                  <Icon name="youtube" size={14} />
+                  YouTube
                 </a>
               </li>
             )}
-            <li className="text-muted">{site.location}</li>
+            <li className={`${row} text-muted`}>
+              <Icon name="pin" size={14} />
+              {site.location}
+            </li>
           </ul>
         </div>
 
@@ -70,18 +81,21 @@ export default function Footer() {
           <ul className="mt-3 space-y-1.5 text-sm">
             {social.map((l) => (
               <li key={l.label}>
-                <a href={l.href} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-ink">
+                <a href={l.href} target="_blank" rel="noopener noreferrer" className={`${row} text-muted hover:text-ink`}>
+                  <Icon name={l.icon} size={14} />
                   {l.label} ↗
                 </a>
               </li>
             ))}
             <li>
-              <Link href="/resume" className="text-muted hover:text-ink">
+              <Link href="/resume" className={`${row} text-muted hover:text-ink`}>
+                <Icon name="resume" size={14} />
                 Resume
               </Link>
             </li>
             <li>
-              <a href={site.resumePdf} download className="text-muted hover:text-ink">
+              <a href={site.resumePdf} download className={`${row} text-muted hover:text-ink`}>
+                <Icon name="download" size={14} />
                 Download CV (PDF)
               </a>
             </li>

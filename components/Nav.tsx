@@ -7,7 +7,7 @@ import ThemeSwitcher from "./ThemeSwitcher";
 import AnimatedLogo from "./AnimatedLogo";
 import { site } from "@/data/site";
 import { navItems } from "@/data/nav";
-
+import { Icon } from "./Icons";
 
 export default function Nav() {
   const pathname = usePathname();
@@ -104,9 +104,10 @@ export default function Nav() {
                 <Link
                   href={item.href}
                   aria-current={isActive(item.href) ? "page" : undefined}
-                  className="flex items-baseline gap-4 py-4 font-display text-2xl"
+                  className="flex items-center gap-4 py-4 font-display text-2xl"
                 >
                   <span className="font-mono text-xs text-accent">{String(i + 1).padStart(2, "0")}</span>
+                  <Icon name={item.icon} size={20} className="text-muted" />
                   {item.label}
                 </Link>
               </li>

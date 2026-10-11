@@ -75,6 +75,8 @@ function Pattern({ project }: { project: Project }) {
     );
   }
 
+  if (project.slug === "ai-platform-go-to-market") return <GtmAnimation />;
+
   // Business: rising steps with markers
   return (
     <g fill="none" stroke={stroke} strokeWidth="2">
@@ -92,27 +94,81 @@ function Pattern({ project }: { project: Project }) {
   );
 }
 
+// Animated go-to-market story: benchmark 6 platforms → find segments → campaign reach climbs.
+function GtmAnimation() {
+  const bars = [62, 88, 48, 104, 74, 118];
+  const segments = [
+    [395, 118, 26],
+    [450, 92, 18],
+    [462, 148, 22],
+  ];
+  return (
+    <g className="gtm">
+      {/* 1. Benchmark: six platforms compared */}
+      <text x="70" y="62" className="gtm-label">BENCHMARK · 6 PLATFORMS</text>
+      {bars.map((h, i) => (
+        <rect
+          key={i}
+          className="gtm-bar"
+          style={{ animationDelay: `${i * 0.18}s` }}
+          x={74 + i * 34}
+          y={290 - h}
+          width="22"
+          height={h}
+          rx="4"
+          fill="var(--accent)"
+          fillOpacity={i === 5 ? 0.85 : 0.3}
+        />
+      ))}
+      <path d="M64 290H290" stroke="var(--line)" strokeWidth="1.5" />
+
+      {/* 2. Segment: audience clusters */}
+      <text x="360" y="62" className="gtm-label">SEGMENTS</text>
+      {segments.map(([x, y, r], i) => (
+        <g key={i}>
+          <circle className="gtm-pulse" style={{ animationDelay: `${0.4 + i * 0.35}s` }} cx={x} cy={y} r={r} fill="var(--accent)" fillOpacity="0.14" stroke="var(--accent)" strokeOpacity="0.6" />
+          {Array.from({ length: 5 }, (_, k) => (
+            <circle key={k} cx={x + Math.cos(k * 1.3 + i) * r * 0.55} cy={y + Math.sin(k * 1.3 + i) * r * 0.55} r="2.2" fill="var(--accent)" />
+          ))}
+        </g>
+      ))}
+
+      {/* 3. Campaign reach rising */}
+      <path className="gtm-line" d="M320 290 C 370 280, 380 250, 420 240 S 480 205, 540 180" fill="none" stroke="var(--accent)" strokeWidth="2.5" strokeLinecap="round" />
+      <circle className="gtm-dot" cx="540" cy="180" r="6" fill="var(--accent)" />
+      <text x="492" y="232" className="gtm-value">+40%</text>
+      <text x="420" y="314" className="gtm-label">REACH 5,000+</text>
+    </g>
+  );
+}
+
 export default function ProjectCover({
   project,
   index,
   priority,
   className = "",
+  fit,
 }: {
   project: Project;
   index: number;
   priority?: boolean;
   className?: string;
+  fit?: "cover" | "contain";
 }) {
   if (project.image) {
+    const contain = fit === "contain" || (fit === undefined && project.imageFit === "contain");
     return (
       <div className={`relative overflow-hidden bg-surface-2 ${className}`}>
+        {contain && (
+          <Image src={project.image} alt="" aria-hidden="true" fill sizes="10vw" className="scale-110 object-cover opacity-60 blur-2xl" />
+        )}
         <Image
           src={project.image}
           alt={`Preview of ${project.title}`}
           fill
-          sizes="(min-width: 768px) 50vw, 100vw"
+          sizes={contain ? "(min-width: 768px) 70vw, 100vw" : "(min-width: 768px) 50vw, 100vw"}
           priority={priority}
-          className="object-cover"
+          className={contain ? "object-contain" : "object-cover transition-transform duration-500 group-hover:scale-[1.03]"}
         />
       </div>
     );
