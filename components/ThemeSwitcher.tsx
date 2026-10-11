@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 
 type Theme = "system" | "light" | "dark";
 const options: { value: Theme; label: string }[] = [
-  { value: "system", label: "System" },
-  { value: "light", label: "Light" },
-  { value: "dark", label: "Dark" },
+  { value: "system", label: "Default" },
+  { value: "light", label: "I" },
+  { value: "dark", label: "O" },
 ];
 
 function apply(theme: Theme) {
