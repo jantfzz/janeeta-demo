@@ -3,8 +3,8 @@ import Image from "next/image";
 import {
   bookGenres,
   books,
-  challenges,
   community,
+  highlights,
   hobbiesIntro,
   movies,
   personalBests,
@@ -16,7 +16,6 @@ import {
   strava,
   writing,
 } from "@/data/hobbies";
-import { getMediumPosts } from "@/lib/writing";
 import PageHeader from "@/components/PageHeader";
 import StravaWidget from "@/components/StravaWidget";
 import { Icon as UiIcon } from "@/components/Icons";
@@ -89,9 +88,8 @@ function Icon({ name }: { name: "road" | "trail" | "tennis" | "padel" | "pickle"
   );
 }
 
-export default async function HobbiesPage() {
+export default function HobbiesPage() {
   const racketIcons = ["tennis", "padel", "pickle"] as const;
-  const posts = await getMediumPosts("janeetafz");
 
   return (
     <>
@@ -104,6 +102,20 @@ export default async function HobbiesPage() {
             </li>
           ))}
         </ul>
+
+        <section aria-label="Highlights" className="-mt-12">
+          <p className="font-mono text-[11px] uppercase tracking-widest text-muted">Highlights</p>
+          <ul className="mt-3 flex flex-wrap gap-4">
+            {highlights.map((h) => (
+              <li key={h.src} className="w-40 sm:w-48">
+                <div className="relative aspect-[3/4] overflow-hidden rounded-xl border border-line bg-surface-2">
+                  <Image src={h.src} alt={h.alt} fill sizes="192px" className="object-cover" />
+                </div>
+                <p className="mt-1.5 text-xs text-muted">{h.caption}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
 
         {/* RUNNING */}
         <section aria-labelledby="running">
@@ -138,47 +150,36 @@ export default async function HobbiesPage() {
                 ))}
               </dl>
 
-              <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {races.map((r) => (
-                  <li key={r.name} className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-surface">
+                  <li
+                    key={r.name}
+                    className={`flex gap-4 rounded-2xl border bg-surface p-3 ${r.category.includes("PB") ? "border-accent" : "border-line"}`}
+                  >
                     {r.photo && (
-                      <div className="relative aspect-[4/5] overflow-hidden bg-surface-2">
-                        <Image
-                          src={r.photo}
-                          alt={`Janeeta at ${r.name}`}
-                          fill
-                          sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-                          className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
-                        />
-                        <span className="absolute left-3 top-3 rounded-full bg-bg/90 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-ink">
-                          {r.category}
-                        </span>
+                      <div className="relative h-24 w-[72px] shrink-0 overflow-hidden rounded-lg bg-surface-2">
+                        <Image src={r.photo} alt={`Janeeta at ${r.name}`} fill sizes="72px" className="object-cover object-top" />
                       </div>
                     )}
-                    <div className="flex flex-1 flex-col p-4">
-                      <p className="font-mono text-xs text-muted">{r.date}</p>
+                    <div className="min-w-0 flex-1">
+                      <p className="flex flex-wrap items-center gap-2 font-mono text-[11px] text-muted">
+                        {r.date}
+                        <span className={`rounded-full px-2 py-0.5 text-[10px] uppercase tracking-widest ${r.category.includes("PB") ? "bg-accent text-accent-ink" : "bg-accent-soft text-ink"}`}>
+                          {r.category}
+                        </span>
+                      </p>
                       <p className="mt-1 font-semibold leading-snug">{r.name}</p>
-                      <p className="mt-2 font-mono text-xs">
+                      <p className="mt-1 font-mono text-xs">
                         {r.distanceKm.toFixed(2)} km · {r.time}
                         {r.pace && ` · ${r.pace}`}
                         {r.elevation && ` · ${r.elevation}`}
                       </p>
-                      {r.note && <p className="mt-2 text-sm text-accent">{r.note}</p>}
+                      {r.note && <p className="mt-1 text-sm text-accent">{r.note}</p>}
                     </div>
                   </li>
                 ))}
               </ul>
 
-              <p className="mt-8 text-sm text-muted">Milestones: Strava challenges completed</p>
-              <ol className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-                {challenges.map((c) => (
-                  <li key={c.name} className="flex flex-col rounded-xl border border-line bg-surface p-4">
-                    <span className="font-display text-xl text-accent">{c.distance}</span>
-                    <span className="mt-2 text-sm font-semibold leading-snug">{c.name}</span>
-                    <span className="mt-auto pt-2 text-xs text-muted">{c.date}</span>
-                  </li>
-                ))}
-              </ol>
             </Sub>
 
             <Sub n="02" title="Community">
@@ -285,23 +286,6 @@ export default async function HobbiesPage() {
               </Reveal>
             ))}
           </ul>
-          {posts.length > 0 && (
-            <div className="mt-6">
-              <p className="font-mono text-[11px] uppercase tracking-widest text-muted">Latest on Medium</p>
-              <ul className="mt-3 divide-y divide-line border-y border-line">
-                {posts.map((p) => (
-                  <li key={p.url}>
-                    <a href={p.url} target="_blank" rel="noopener noreferrer" className="flex items-baseline justify-between gap-4 py-3 hover:text-accent">
-                      <span className="font-semibold">{p.title}</span>
-                      <span className="shrink-0 font-mono text-xs text-muted">
-                        {p.date && new Date(p.date).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
-                      </span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
         </section>
 
         {/* PHOTOGRAPHY */}

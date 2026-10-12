@@ -12,7 +12,8 @@ import ExperienceList from "@/components/ExperienceList";
 import Showcase from "@/components/ShowcaseLazy";
 import Reveal from "@/components/Reveal";
 import CountUp from "@/components/CountUp";
-import ToolsMarquee from "@/components/ToolsMarquee";
+import SkillsMarquee from "@/components/SkillsMarquee";
+import CardStack from "@/components/CardStack";
 
 export default function Home() {
   const featured = projects.find((p) => p.featured) ?? projects[0];
@@ -29,7 +30,7 @@ export default function Home() {
             <span className="text-accent">●</span> {site.role}
           </p>
           <h1 id="hero-title" className="mt-5 max-w-4xl font-display text-[2rem] leading-[1.1] tracking-tight sm:text-[2.6rem] md:text-[3.25rem]">
-            I analyze <em className="text-accent">lab data</em> and field systems into statistical insights and business decisions.
+            Explore, <em className="text-accent">Learn</em>, and Make Impact.
           </h1>
           <p className="mt-5 max-w-2xl text-base text-muted md:text-[1.05rem]">{site.intro}</p>
 
@@ -170,13 +171,18 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* 04 RECOGNITION */}
+      {/* 04 ACHIEVEMENTS */}
       <section aria-labelledby="rec-title" className="py-16 md:py-20">
         <Container>
-          <SectionHeader id="rec-title" number="04" title="Recognition" intro="Scientific paper competitions at provincial and national level." />
+          <SectionHeader id="rec-title" number="04" title="Achievements" intro="Scientific paper competitions at provincial and national level." />
           <ol className="grid gap-6 md:grid-cols-3">
             {recognition.map((r, i) => (
               <Reveal as="li" key={r.title} delay={i * 90} className="flex flex-col rounded-2xl border border-line p-6">
+                {r.photos && r.photos.length > 0 && (
+                  <div className="mb-6">
+                    <CardStack images={r.photos} title={r.title} compact />
+                  </div>
+                )}
                 <div className="flex items-center justify-between">
                   <span className="font-mono text-sm text-accent">{String(i + 1).padStart(2, "0")}</span>
                   <Tag>
@@ -195,11 +201,11 @@ export default function Home() {
       {/* 05 CAPABILITIES */}
       <section aria-labelledby="cap-title" className="py-16 md:py-20">
         <Container>
-          <SectionHeader id="cap-title" number="05" title="What I work with" intro="Skills grouped by what they do, with the projects where I've used them." />
-          <div className="mb-8">
-            <ToolsMarquee />
+          <SectionHeader id="cap-title" number="05" title="What I work with" intro="Data & analytics, lab, and business & strategy skills, in the order they appear on my resume, with the projects where I've used them." />
+          <div className="mb-10">
+            <SkillsMarquee />
           </div>
-          <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-2">
+          <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line lg:grid-cols-3">
             {capabilities.map((c, i) => (
               <Reveal key={c.title} className="bg-bg p-6 md:p-8">
                 <h3 className="flex items-baseline gap-3 font-display text-xl tracking-tight">

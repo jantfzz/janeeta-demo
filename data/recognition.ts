@@ -1,6 +1,15 @@
 // Awards and certifications, newest first.
 
-export const recognition = [
+export const recognition: {
+  date: string;
+  title: string;
+  issuer: string;
+  level: string;
+  field: string;
+  description: string;
+  impact: string;
+  photos?: string[];
+}[] = [
   {
     date: "2024",
     title: "3rd Winner, “The Landformation” Scientific Paper Competition",
@@ -10,6 +19,7 @@ export const recognition = [
     description:
       "Compared how well spent mushroom substrate (Agaricus bisporus) and Pseudomonas aeruginosa biodegrade soil contaminated with total petroleum hydrocarbons.",
     impact: "Showed a low-cost bioremediation route that reuses mushroom-farming waste to clean oil-contaminated soil.",
+    photos: Array.from({ length: 7 }, (_, i) => `/achievements/landformation/${String(i + 1).padStart(2, "0")}.jpg`),
   },
   {
     date: "2023",
@@ -20,6 +30,7 @@ export const recognition = [
     description:
       "Proposed biodiesel made from chicken fat with an eggshell-derived catalyst as a response to global boiling.",
     impact: "Turned two poultry by-products, fat and eggshells, into a fuel and its catalyst.",
+    photos: Array.from({ length: 8 }, (_, i) => `/achievements/seary/${String(i + 1).padStart(2, "0")}.jpg`),
   },
   {
     date: "2021",

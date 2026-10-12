@@ -12,15 +12,15 @@ export const site = {
   // Words the animated header logo types out, one after another.
   logoWords: ["janeeta.faiza", "data analyst", "agri-tech", "lab geek"],
 
-  headline: "I analyze lab data and field systems into statistical insights and business decisions.",
+  headline: "Explore, Learn, and Make Impact.",
   intro:
-    "I'm Janeeta, a Bio-Agricultural Engineering graduate from ITB. I work across data analytics, business intelligence and go-to-market planning, grounded in hands-on microbiology lab work and agricultural systems research.",
+    "I'm Janeeta, a Bio-Agricultural Engineering graduate from ITB. I work across data analytics, business intelligence and go-to-market planning, grounded in hands-on microbiology lab work and agricultural systems research. As a lab geek, I'm also passionate about building my career in the FMCG industry, improving product development and innovation as an R&D formulator, QC/QA specialist and lab analyst.",
 
   quickFacts: [
-    { label: "Current focus", value: "Data analytics & business intelligence" },
+    { label: "Current focus", value: "Data analytics, Business intelligence, R&D, Lab Analyst, QC/QA, SCM, Food Scientist" },
     { label: "Education", value: "Bio-Agricultural Engineering, ITB" },
     { label: "GPA", value: "3.39 / 4.00" },
-    { label: "Leadership", value: "Treasurer & Head of Fundraising, KPA-ITB" },
+    { label: "MBTI", value: "INFJ" },
   ],
 
   // Headline numbers shown with a count-up animation on the home page.

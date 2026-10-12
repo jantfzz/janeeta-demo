@@ -5,7 +5,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 // A stack of image cards. Next/Previous moves the top card to the back of the pile;
 // clicking the top card opens it full size.
-export default function CardStack({ images, title }: { images: string[]; title: string }) {
+export default function CardStack({ images, title, compact = false }: { images: string[]; title: string; compact?: boolean }) {
   const [i, setI] = useState(0);
   const [leaving, setLeaving] = useState<null | "next" | "prev">(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -41,7 +41,7 @@ export default function CardStack({ images, title }: { images: string[]; title: 
   return (
     <div>
       <div
-        className="relative mx-auto aspect-[16/10] w-full max-w-3xl"
+        className={`relative mx-auto w-full ${compact ? "aspect-[4/3] max-w-md" : "aspect-[16/10] max-w-3xl"}`}
         role="region"
         aria-roledescription="carousel"
         aria-label={`${title} images`}
@@ -55,7 +55,7 @@ export default function CardStack({ images, title }: { images: string[]; title: 
           const idx = (i + depth) % n;
           const top = depth === 0;
           const rot = [0, -2.5, 2, -1.2][depth];
-          const shift = depth * 12;
+          const shift = depth * (compact ? 7 : 12);
           const out = top && leaving;
           return (
             <button
@@ -80,7 +80,7 @@ export default function CardStack({ images, title }: { images: string[]; title: 
                 src={images[idx]}
                 alt={top ? `${title}, image ${idx + 1} of ${n}` : ""}
                 fill
-                sizes="(min-width: 768px) 720px, 100vw"
+                sizes={compact ? "448px" : "(min-width: 768px) 720px, 100vw"}
                 className="object-contain"
               />
             </button>
@@ -88,11 +88,11 @@ export default function CardStack({ images, title }: { images: string[]; title: 
         })}
       </div>
 
-      <div className="mx-auto mt-10 flex max-w-3xl items-center justify-between gap-4">
+      <div className={`mx-auto flex items-center justify-between gap-4 ${compact ? "mt-6 max-w-md" : "mt-10 max-w-3xl"}`}>
         <button
           type="button"
           onClick={() => go("prev")}
-          className="grid h-10 w-10 place-items-center rounded-full border border-line hover:border-ink"
+          className={`grid place-items-center rounded-full border border-line hover:border-ink ${compact ? "h-8 w-8 text-sm" : "h-10 w-10"}`}
           aria-label="Previous image"
         >
           ←
@@ -105,13 +105,13 @@ export default function CardStack({ images, title }: { images: string[]; title: 
         <button
           type="button"
           onClick={() => go("next")}
-          className="grid h-10 w-10 place-items-center rounded-full border border-line hover:border-ink"
+          className={`grid place-items-center rounded-full border border-line hover:border-ink ${compact ? "h-8 w-8 text-sm" : "h-10 w-10"}`}
           aria-label="Next image"
         >
           →
         </button>
       </div>
-      <p className="mt-3 text-center font-mono text-xs text-muted" aria-live="polite">
+      <p className={`text-center font-mono text-muted ${compact ? "mt-2 text-[10px]" : "mt-3 text-xs"}`} aria-live="polite">
         {i + 1} / {n} · click the card to enlarge
       </p>
 

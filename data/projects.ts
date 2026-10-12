@@ -251,6 +251,42 @@ export const projects: Project[] = [
     tools: ["ArcGIS", "ArcMap", "Landsat", "Image classification"],
   },
   {
+    slug: "agri-instrumentation-control",
+    title: "Agricultural Systems Instrumentation and Control",
+    summary:
+      "An IoT watering system for mung beans: Wemos D1 sensors stream soil and air data over MQTT to a Node-RED dashboard, and a pump switches on when the soil gets dry.",
+    category: "Data",
+    year: "2024",
+    organization: "Agricultural Systems Instrumentation and Control (BA2204), ITB",
+    image: "/projects/agri-instrumentation-control/main.jpg",
+    imageFit: "contain",
+    documents: [{ label: "Project presentation (PDF)", url: "https://drive.google.com/file/d/1HbuBXtC712W8K7Q8beCuZcqdGQ__E-Li/view" }],
+    metrics: [
+      { value: "5", label: "Variables measured" },
+      { value: "29.4 ± 0.3 °C", label: "Air temperature" },
+      { value: "1st order", label: "Dynamic growth model" },
+    ],
+    context:
+      "A group project (Kelompok 12, six students) for ITB's Agricultural Systems Instrumentation and Control course: build a sensor-driven system that monitors a growing plant and waters it automatically.",
+    challenge:
+      "Make low-cost sensors produce data reliable enough to explain plant growth, run the watering decision automatically, and quantify the error and uncertainty in every measurement.",
+    role: "One of six team members in Kelompok 12, working across the build, data collection and analysis.",
+    approach: [
+      "Wired a Wemos D1 microcontroller with a DHT11 air sensor, a YL-69 soil-moisture probe, a motor driver and a water pump.",
+      "Programmed the decision rule in Arduino IDE: if soil moisture is low, run the pump; if it is ideal, skip watering.",
+      "Streamed readings over MQTT into Node-RED dashboards and stored them in InfluxDB, then exported to CSV for analysis.",
+      "Grew mung beans in andisol soil in Antapani, Bandung, measuring soil moisture, air temperature, humidity, plant height and water added.",
+      "Calculated standard deviation and measurement uncertainty, fitted a sigmoid growth curve and a first-order dynamic system model, and compared results with literature.",
+    ],
+    results: [
+      "Air humidity (72.16 ± 0.86)%, temperature (29.41 ± 0.32) °C, soil moisture (81.22 ± 1.93)% and plant height (15.90 ± 1.91) cm.",
+      "Found that soil moisture and air humidity significantly affect plant height.",
+      "The first-order model predicted growth dynamics with low error.",
+      "Flagged inconsistent watering volume (± 2.76 ml) as the main source of instability to fix.",
+    ],
+    tools: ["Arduino IDE", "Wemos D1", "DHT11 & soil-moisture sensors", "MQTT", "Node-RED", "InfluxDB", "Excel"],
+  },
+  {
     slug: "growth-chamber-kit",
     image: "/projects/growth-chamber-kit/main.jpg",
     gallery: g("growth-chamber-kit", 9),

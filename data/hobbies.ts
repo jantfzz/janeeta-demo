@@ -37,6 +37,7 @@ export type Race = {
 };
 
 export const races: Race[] = [
+  { name: "Pocari Sweat Run Bandung", date: "20 Sep 2026", kind: "Road", category: "Half marathon · PB", distanceKm: 21.28, time: "2h 27m 51s", pace: "6:57/km", elevation: "118 m gain", note: "Half marathon personal best", photo: "/races/pocari-bdg-2026.jpg" },
   { name: "Bukit Bintang Trail Run", date: "2026", kind: "Trail", category: "Trail", distanceKm: 15.03, time: "2h 44m", elevation: "808 m gain", photo: "/races/bukit-bintang-2026.jpg" },
   { name: "Tahura Trail Run", date: "2026", kind: "Trail", category: "Trail", distanceKm: 12.21, time: "2h 05m", elevation: "467 m gain", photo: "/races/tahura-2026.jpg" },
   { name: "BTN Jakarta International Marathon", date: "2026", kind: "Road", category: "Half marathon", distanceKm: 21.2, time: "2h 40m", pace: "7:35/km", photo: "/races/btn-jakim-2026.jpg" },
@@ -51,21 +52,18 @@ export const races: Race[] = [
 export const personalBests = [
   { label: "5K", value: "27:11", detail: "5:26/km" },
   { label: "10K", value: "1:05:45", detail: "Indonesia Women's Run" },
-  { label: "Half marathon", value: "2:37", detail: "Telkomsel Digiland Run" },
+  { label: "Half marathon", value: "2:27:51", detail: "Pocari Sweat Run Bandung 2026" },
   { label: "Trail climb", value: "808 m", detail: "Bukit Bintang, 15 km" },
-];
-
-// Strava challenges completed (shown as milestones under "Race").
-export const challenges = [
-  { name: "August Run 100K Challenge", date: "Aug 2026", distance: "100 km" },
-  { name: "Runna August Ten Days Active Challenge", date: "Aug 2026", distance: "10 active days" },
-  { name: "adidas: Run Hyper", date: "Aug 2026", distance: "Challenge" },
-  { name: "May Half Marathon Challenge", date: "May 2026", distance: "21.1 km" },
-  { name: "April 10K Challenge", date: "Apr 2026", distance: "10 km" },
 ];
 
 // Running communities, names only.
 export const community = ["Selarinya Recreation Club", "Strava running clubs"];
+
+// Highlight photos at the top of /hobbies.
+export const highlights = [
+  { src: "/hobbies/dago.jpg", alt: "Janeeta running on a road in Dago, Bandung", caption: "Road · Dago, Bandung" },
+  { src: "/hobbies/trail.jpg", alt: "Janeeta climbing past a fallen tree on a forest trail", caption: "Trail · West Java" },
+];
 
 // ---------- Writing & photography ----------
 export const writing = [

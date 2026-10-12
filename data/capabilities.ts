@@ -1,24 +1,51 @@
-// Skill groups. `projects` are slugs from data/projects.ts and become links.
+// The three skill groups on the home page (05 · What I work with), ordered as on the resume.
+// `projects` are slugs from data/projects.ts and become links.
 
 export const capabilities = [
   {
-    title: "Data & analytics",
-    skills: ["Python", "SQL", "R", "Power BI", "Data cleansing & validation", "Machine learning"],
-    projects: ["tomato-leaf-disease-ml", "pgpr-biochar-lettuce"],
+    title: "Data & analytics skills",
+    skills: [
+      "Data cleansing & validation",
+      "Dashboard development",
+      "Business intelligence",
+      "Data analytics (R, SQL, Power BI)",
+      "Python & C++ (OOP)",
+      "Data engineering",
+      "Machine learning & predictive models",
+      "Web scraping & image processing",
+      "Statistical analysis (ANOVA, Duncan)",
+      "GIS & remote sensing",
+    ],
+    projects: ["tomato-leaf-disease-ml", "agri-instrumentation-control", "landsat-land-cover-analysis"],
   },
   {
-    title: "Field & lab science",
-    skills: ["Agricultural microbiology", "CFU & FDA assays", "Experimental design", "GMP & BPOM QC", "GIS & remote sensing"],
-    projects: ["pgpr-biochar-lettuce", "landsat-land-cover-analysis"],
+    title: "Lab skills",
+    skills: [
+      "Agricultural microbiology",
+      "Microbiological experiments",
+      "CFU & FDA assays",
+      "Contamination checks against SOPs",
+      "GMP, GLP & BPOM standards",
+      "Product formulation records",
+      "Lab safety",
+      "Experimental design",
+      "Sensors & instrumentation",
+    ],
+    projects: ["pgpr-biochar-lettuce", "agri-instrumentation-control"],
   },
   {
-    title: "Systems & business",
-    skills: ["AHP decision analysis", "Financial modelling", "Mass & energy balance", "Competitor benchmarking", "Segmentation"],
-    projects: ["integrated-urban-farming-system", "ai-platform-go-to-market"],
-  },
-  {
-    title: "Delivery & leadership",
-    skills: ["Project management", "Budget control", "Stakeholder & vendor coordination", "Team performance systems"],
-    projects: ["kpa-seasonal-event-fundraising", "growth-chamber-kit"],
+    title: "Business & strategy skills",
+    skills: [
+      "Cross-functional collaboration",
+      "Stakeholder management",
+      "Vendor & agency coordination",
+      "Project management",
+      "Commercial planning",
+      "Business process improvement",
+      "Research & development",
+      "Competitor benchmarking",
+      "Financial modelling & budgeting",
+    ],
+    projects: ["ai-platform-go-to-market", "kpa-seasonal-event-fundraising", "integrated-urban-farming-system"],
   },
 ];

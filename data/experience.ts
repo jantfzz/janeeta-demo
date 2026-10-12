@@ -53,6 +53,7 @@ const entries: Experience[] = [
       "Identified signs of microbiological contamination in products against SOPs, and supported food quality under GMP, global standards and BPOM regulations.",
     details: ["Prepared and documented experimental data and product formulations."],
     skills: ["Quality Control", "GLP", "Industrial Microbiology"],
+    photos: Array.from({ length: 16 }, (_, i) => `/exp/agavi/${String(i + 1).padStart(2, "0")}.jpg`),
   },
   {
     organization: "Institut Teknologi Bandung",

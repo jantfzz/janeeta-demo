@@ -4,10 +4,10 @@ import Image from "next/image";
 import { useRef, useState } from "react";
 import type { Experience } from "@/data/experience";
 import Reveal from "./Reveal";
+import CardStack from "./CardStack";
 
 function DetailsDialog({ e, onClose }: { e: Experience; onClose: () => void }) {
   const ref = useRef<HTMLDialogElement>(null);
-  const [photo, setPhoto] = useState(0);
   const photos = e.photos ?? [];
 
   return (
@@ -42,24 +42,8 @@ function DetailsDialog({ e, onClose }: { e: Experience; onClose: () => void }) {
       </div>
       <div className="max-h-[calc(85dvh-7rem)] overflow-y-auto p-6">
         {photos.length > 0 && (
-          <div className="mb-6">
-            <div className="relative aspect-[16/9] overflow-hidden rounded-xl bg-surface-2">
-              <Image src={photos[photo]} alt={`${e.role} at ${e.organization}, photo ${photo + 1}`} fill sizes="720px" className="object-cover" />
-            </div>
-            {photos.length > 1 && (
-              <div className="mt-3 flex justify-center gap-2">
-                {photos.map((_, i) => (
-                  <button
-                    key={i}
-                    type="button"
-                    aria-label={`Show photo ${i + 1}`}
-                    aria-current={i === photo}
-                    onClick={() => setPhoto(i)}
-                    className={`h-2 rounded-full transition-all ${i === photo ? "w-6 bg-accent" : "w-2 bg-line"}`}
-                  />
-                ))}
-              </div>
-            )}
+          <div className="mb-8">
+            <CardStack images={photos} title={`${e.role} at ${e.organization}`} compact />
           </div>
         )}
         <p className="font-mono text-[10px] uppercase tracking-widest text-muted">Key responsibilities & impact</p>
