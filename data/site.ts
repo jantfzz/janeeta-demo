@@ -4,13 +4,13 @@
 export const site = {
   name: "Janeeta Faiza",
   shortName: "Jen",
-  initials: "JF",
-  role: "Data & Business Analyst with an Agri-Tech foundation",
+  initials: "<//3",
+  role: "Business Analyst with an Agri-Tech foundation",
   url: "https://janeeta-portfolio.vercel.app",
   location: "Bandung, West Java, Indonesia",
 
   // Words the animated header logo types out, one after another.
-  logoWords: ["janeeta.faiza", "data analyst", "agri-tech", "lab geek"],
+  logoWords: ["Lab work", "R&D", "data scientist", "agri-tech", "business analyst"],
 
   headline: "Explore, Learn, and Make Impact.",
   intro:
@@ -45,7 +45,7 @@ export const site = {
     github: "", // add your GitHub URL here to show the button
   },
 
-  resumePdf: "/Janeeta-Faiza-CV.pdf",
+  resumePdf: "/CV_Nov_Janeeta.pdf",
 
   identity: {
     practice: "Analyst by practice.",
