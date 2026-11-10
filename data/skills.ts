@@ -146,7 +146,7 @@ export const skillGroups: SkillGroup[] = [
       { name: "Tutoring & Academic Advising", where: "HIMAREKTA Academic Division" },
       { name: "Human Resources (HR)", where: "KPA-ITB" },
       { name: "Human Capital Management", where: "KPA-ITB" },
-      { name: "Trustee", where: "KPA-ITB Treasurer" },
+      { name: "Financial & Budgeting", where: "KPA-ITB Treasurer" },
     ],
   },
 ];
