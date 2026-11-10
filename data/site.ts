@@ -45,7 +45,7 @@ export const site = {
     github: "", // add your GitHub URL here to show the button
   },
 
-  resumePdf: "/CV_Nov_Janeeta.pdf",
+  resumePdf: "/public/CV_Nov_Janeeta.pdf",
 
   identity: {
     practice: "Analyst by practice.",
