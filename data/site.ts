@@ -42,10 +42,10 @@ export const site = {
     medium: "https://medium.com/@janeetafz",
     substack: "https://substack.com/@jantfzz",
     photography: "https://www.instagram.com/helium.jump/",
-    github: "", // add your GitHub URL here to show the button
+    github: "https://github.com/jantfzz", // add your GitHub URL here to show the button
   },
 
-  resumePdf: "/public/CV_Nov_Janeeta.pdf",
+  resumePdf: "/CV_Nov_Janeeta.pdf",
 
   identity: {
     practice: "Analyst by practice.",
